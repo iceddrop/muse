@@ -23,7 +23,7 @@ export default function Navbar(){
                 <img src={menu} onClick={clickAct} className='hamburger md:hidden'/>
 				<img src={logo} className='app-logo pl-4' />
 				<form className='search-input flex justify-between md:flex-row-reverse md:items-center'>
-                   <input placeholder='search artists'  className='search ml-6'/>
+                   <input placeholder='search artists'  className='search ml-6 '/>
 				   <img src={search} className='search-icon md:ml-12 lg:ml-14 2xl:ml-18' />
 				</form>	
 			</div>

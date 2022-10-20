@@ -91,22 +91,64 @@
   width:50px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
  }
-@media screen and (max-width: 700px) {
-  .sidebar {
-display:none;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
+.hero-div{
+  margin-top:70px;
+  padding:30px;
 }
+.hero-accomodate{
+  position:relative;
+}
+.hero-section-text{
+  position:absolute;
+  top: 17px;
+  left: 25px;
+  height:100%;
+}
+.hero-img{
 
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
+  background-position: center center;    
+  
+}
+.hero-paragraph{
+  width:250px;
+}
+.carousel{
+  width:100%!important;
+  height:100%;
+
+}
+.inner-carousel{
+  display:flex;
+  overflow:scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.music-chart-card{
+  width:16rem; 
+  min-width:16rem;
+  background: #1A1E1F;
+  border-radius: 20px;
+}
+.heart2{
+  width:27px;
+  height:27px;
+  border:1px solid #FACD66; 
+  border-radius: 50% ;
+}
+@media only screen and (min-width:319px) and (max-width:320px){
+  .hero-paragraph{
+    width:200px!important ;
+  }
+}
+@media only screen and (min-width:340px){
+  .hero-img{
+    border-radius:20px;
+  }
+  .mini-hero-div{
+    height:180px;
   }
 }
 @media only screen and (min-width:768px){
-
   .search-input{
     justify-content:start!important;
   }
@@ -125,5 +167,55 @@ display:none;
   .search-icon{
     width:16px;
     height:16px;
+  }
+  .hero-div{
+  
+    margin-left:80px;
+  }
+  .hero-img{
+    background-attachment: scroll;
+    background-position: center;
+    background-size:600px!important;
+  }
+  .hero-section-text{
+    height:300px;
+  }
+  .music-chart-card{
+    width:270px!important;
+    min-width: 270px!important;
+  }
+   .rectangle{
+    height: 60px;
+   }
+}
+@media only screen and (min-width:992px){
+  .hero-img{
+    background-size:950px!important;
+  }
+  .hero-section-text{
+    height:320px;
+  }
+  .music-chart-card{
+    width: 280px!important;
+    min-width: 280px!important;
+  }
+  .rectangle{
+    height: 40px;
+  }
+  .music-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start!important;
+  }
+}
+@media only screen and (min-width:1200px){
+  .hero-img{
+    background-size:700px!important;
+  }
+  .hero-section-text{
+    height:370px;
+  }
+  .hero-div{
+    height:1000px;
   }
 }
