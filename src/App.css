@@ -35,7 +35,7 @@
   height:34px;
 }
 .search-input{
-  width:100%;
+  width:100%!important;
 }
 *:focus{
   outline:none
@@ -43,6 +43,9 @@
 .search{
   background:#1D2123;
   color:white;
+}
+.search-icon{
+  width:24px;
 }
 .search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color:#1E1E1E;
@@ -91,26 +94,42 @@
   width:50px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
  }
+ .hero-section-title{
+  font-family: Quicksand;
+ }
 .hero-div{
   margin-top:70px;
   padding:30px;
 }
 .hero-accomodate{
   position:relative;
+ 
 }
+.hero-section-title-2{
+  font-family: Quicksand;
+  font-size: 35px;
+ }
 .hero-section-text{
   position:absolute;
   top: 17px;
   left: 25px;
   height:100%;
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
 }
 .hero-img{
-
   background-position: center center;    
-  
 }
 .hero-paragraph{
   width:250px;
+}
+.top-chart{
+  font-family: Quicksand;
+  font-weight: 700;
+  font-size: 20px;
 }
 .carousel{
   width:100%!important;
@@ -123,21 +142,60 @@
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
 }
+.inner-carousel::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
 .music-chart-card{
   width:16rem; 
   min-width:16rem;
   background: #1A1E1F;
   border-radius: 20px;
 }
+.chart-card-header{
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 120%;
+}
+.chart-card-artist{
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  color: rgba(255, 255, 255, 0.5);
+}
+.chart-card-playtime{
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+}
 .heart2{
   width:27px;
   height:27px;
-  border:1px solid #FACD66; 
+  border:1px solid rgba(255, 255, 255, 0.11); 
   border-radius: 50% ;
+  cursor: pointer;
 }
 @media only screen and (min-width:319px) and (max-width:320px){
+  .search-icon{
+    position: relative;
+    right: 40px!important;
+  }
   .hero-paragraph{
     width:200px!important ;
+  }
+  .top-chart{
+    padding-top: 10px;
+  }
+  .music-info{
+    margin-top:20px;
+  }
+  .chart-card-playtime{
+    margin-top: 20px;
   }
 }
 @media only screen and (min-width:340px){
@@ -146,6 +204,15 @@
   }
   .mini-hero-div{
     height:180px;
+  }
+  .top-chart{
+    padding-top: 10px;
+  }
+  .music-info{
+    margin-top:20px;
+  }
+  .chart-card-playtime{
+    margin-top: 15px;
   }
 }
 @media only screen and (min-width:768px){
@@ -165,11 +232,10 @@
     color: rgba(255, 255, 255, 0.25);
   }
   .search-icon{
-    width:16px;
-    height:16px;
+    width:16px!important;
+    height:16px !important;
   }
   .hero-div{
-  
     margin-left:80px;
   }
   .hero-img{
@@ -180,6 +246,9 @@
   .hero-section-text{
     height:300px;
   }
+  .music-info{
+    margin-top:20px;
+  }
   .music-chart-card{
     width:270px!important;
     min-width: 270px!important;
@@ -187,6 +256,9 @@
    .rectangle{
     height: 60px;
    }
+   .chart-card-playtime{
+    margin-top: 15px;
+  }
 }
 @media only screen and (min-width:992px){
   .hero-img{
@@ -195,17 +267,34 @@
   .hero-section-text{
     height:320px;
   }
+  .top-chart{
+    padding-bottom: 0px!important;
+  }
   .music-chart-card{
     width: 280px!important;
     min-width: 280px!important;
-  }
-  .rectangle{
-    height: 40px;
+    height: 90px;
+    margin-top:10px;
   }
   .music-info{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start!important;
+    margin-top: -0px!important;
+  }
+  .chart-card-artist{
+    margin-top: 3px;
+  }
+  .chart-card-header{
+    font-size: 14px;
+  }
+  .chart-card-playtime{
+    margin-top: 5px;
+  }
+  .heart-icon-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
   }
 }
 @media only screen and (min-width:1200px){
@@ -217,5 +306,10 @@
   }
   .hero-div{
     height:1000px;
+  }
+  .music-chart-card{
+    width: 380px!important;
+    min-width: 380px!important;
+    margin-top:20px!important;
   }
 }
