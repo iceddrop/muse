@@ -12,6 +12,12 @@
 .nav-dropdown{
   height:500px;
 }
+.dropdown {
+  background-color: white;
+  color:black;
+  font-family:Quicksand;
+}
+
 .nav-item h6{
   color: rgba(239, 238, 224, 0.25);
   font-family:Quicksand;
