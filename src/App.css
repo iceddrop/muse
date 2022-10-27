@@ -82,7 +82,17 @@
   height: 100%;
   overflow: auto;
 }
-
+.search-result-div{
+  position: absolute;
+  padding-top:10px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  left:40px;
+  width: 225px;
+  z-index:2;
+  font-family:Quicksand;
+  background: #1D2123;
+}
 .sidebar a {
   display: block;
   color: #1D2123;
@@ -240,6 +250,10 @@
   .search-icon{
     width:16px!important;
     height:16px !important;
+  }
+  .search-result-div{
+    position: absolute;
+    left:120px;
   }
   .hero-div{
     margin-left:80px;

@@ -43,7 +43,7 @@ export default function Navbar() {
         )
       )
       .catch((err) => console.error(err));
-
+      setIsOpen(true)
   }
 
   function handleChange(event) {
@@ -51,24 +51,37 @@ export default function Navbar() {
   }
   console.log(searchInput);
   console.log(artisteData);
- 
-   
-     const keyDownHandler = event => {
-        console.log('user pressed', event.key );
-        if (event.key === 'Enter'){
-          event.preventDefault();
-          searchArtistes();
-        }
 
+  const keyDownHandler = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      searchArtistes();
+    }
 
-   document.addEventListener('keydown', keyDownHandler)
+    document.addEventListener("keydown", keyDownHandler);
 
-   return(
-    document.removeEventListener('keydown', keyDownHandler)
-   )
+    return document.removeEventListener("keydown", keyDownHandler);
   };
+  
+  const [isOpen, setIsOpen] = React.useState(false)
 
+  const container = React.useRef(null);
+/*listens to click outside search result*/
+  function handleClickOutside(event){
+     if (container.current && !container.current.contains(event.target)){
+         setIsOpen(false)
+     }
+  }
+  React.useEffect(()=>{
+       document.addEventListener('click', handleClickOutside, true);
+
+       return ()=>{
+         document.removeEventListener('click', handleClickOutside, true)
+       }
+  },[])
+console.log(isOpen)
   return (
+    <>
     <nav className="nav p-4 fixed-top">
       <div className="flex flex-col">
         <div className="flex">
@@ -78,9 +91,7 @@ export default function Navbar() {
             <div className="flex md:flex-row-reverse">
               <input
                 placeholder="search artists"
-                onChange={
-                  handleChange
-                }
+                onChange={handleChange}
                 onKeyDown={keyDownHandler}
                 className="search ml-6 "
               />
@@ -90,13 +101,6 @@ export default function Navbar() {
               />
             </div>
           </form>
-        </div>
-        <div>
-          <ul className="flex flex-col items-center text-white">
-            {artisteData.map((name) => (
-              <li className="cursor-pointer pt-1">{name}</li>
-            ))}
-          </ul>
         </div>
       </div>
       <div className={clicked ? "block nav-dropdown" : "hidden"}>
@@ -126,5 +130,16 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+          {
+            isOpen ?        
+             <div ref={container} className='search-result-div'>
+            <ul className="flex flex-col items-center text-white">
+              {artisteData.map((name) => (
+                <li className="cursor-pointer pt-1">{name}</li>
+              ))}
+            </ul>
+          </div> : ''
+          }
+          </>
   );
 }
