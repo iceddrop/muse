@@ -43,6 +43,7 @@ export default function Navbar() {
         )
       )
       .catch((err) => console.error(err));
+
   }
 
   function handleChange(event) {
@@ -50,6 +51,22 @@ export default function Navbar() {
   }
   console.log(searchInput);
   console.log(artisteData);
+ 
+   
+     const keyDownHandler = event => {
+        console.log('user pressed', event.key );
+        if (event.key === 'Enter'){
+          event.preventDefault();
+          searchArtistes();
+        }
+
+
+   document.addEventListener('keydown', keyDownHandler)
+
+   return(
+    document.removeEventListener('keydown', keyDownHandler)
+   )
+  };
 
   return (
     <nav className="nav p-4 fixed-top">
@@ -61,10 +78,10 @@ export default function Navbar() {
             <div className="flex md:flex-row-reverse">
               <input
                 placeholder="search artists"
-                onChange={() => {
-                  handleChange(event);
-                  searchArtistes();
-                }}
+                onChange={
+                  handleChange
+                }
+                onKeyDown={keyDownHandler}
                 className="search ml-6 "
               />
               <img
