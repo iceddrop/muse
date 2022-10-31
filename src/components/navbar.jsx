@@ -8,13 +8,16 @@ import logout from "../assets/Logout.svg";
 import { FaHome } from "react-icons/fa";
 import { BsFillCollectionFill } from "react-icons/bs";
 import { IoMdRadio } from "react-icons/io";
+import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { SearchContext } from "../contexts/SearchContext";
 
 export default function Navbar() {
   const [artisteData, setArtisteData] = React.useState([]);
 
   const [clicked, setClicked] = React.useState(false);
 
-  const [searchInput, setSearchInput] = React.useState("");
+  const {searchInput, setSearchInput} = useContext(SearchContext)
 
   {
     /*flip clicked state*/
@@ -24,32 +27,13 @@ export default function Navbar() {
   }
 
   function searchArtistes() {
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "86f453f970msh48154777add2da0p1e185cjsn969596f1a317",
-        "X-RapidAPI-Host": "spotify81.p.rapidapi.com",
-      },
-    };
-
-    fetch(
-      `https://spotify81.p.rapidapi.com/search?q=${searchInput}&type=multi&offset=0&limit=10&numberOfTopResults=5`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) =>
-        setArtisteData(
-          response.artists.items.map((artist) => artist.data.profile.name)
-        )
-      )
-      .catch((err) => console.error(err));
       setIsOpen(true)
   }
 
   function handleChange(event) {
     setSearchInput(event.target.value);
   }
-  console.log(searchInput);
+
   console.log(artisteData);
 
   const keyDownHandler = (event) => {
@@ -80,6 +64,10 @@ export default function Navbar() {
        }
   },[])
 console.log(isOpen)
+ React.useEffect(()=>{
+  window.localStorage.setItem('searchInput', JSON.stringify(searchInput));
+ },[searchInput])
+
   return (
     <>
     <nav className="nav p-4 fixed-top">
@@ -133,11 +121,7 @@ console.log(isOpen)
           {
             isOpen ?        
              <div ref={container} className='search-result-div'>
-            <ul className="flex flex-col items-center text-white">
-              {artisteData.map((name) => (
-                <li className="cursor-pointer pt-1">{name}</li>
-              ))}
-            </ul>
+                <Link to='./artisteMusicOverview' className="flex flex-col items-center text-white cursor-pointer pt-1">{searchInput}</Link>
           </div> : ''
           }
           </>

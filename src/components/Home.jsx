@@ -10,7 +10,9 @@ import heart2 from '../assets/Heart2.svg'
 import rectangle from '../assets/Rectangle.svg'
 import heroImg from '../assets/HeroSection.svg'
 import smallHeroImg from '../assets/homesecmobile.svg'
+import React from 'react'
 export default function Home(){
+
     return(
         <section className=''>
            <div class="sidebar  flex-col items-center hidden md:flex">
