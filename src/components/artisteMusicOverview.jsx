@@ -1,10 +1,18 @@
 import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
+import { PlaySongContext } from "../contexts/playSongContext";
+
 export default function showOverview() {
     const {searchInput} = useContext(SearchContext)
     console.log(searchInput)
     const [artisteData, setArtisteData] = React.useState([])
+
+    const [songsData, setSongsData] = React.useState([])
+
+     
+    const {currentSong, setCurrentSong} = useContext(PlaySongContext)
+
    React.useEffect(()=>{
     const options = {
         method: 'GET',
@@ -22,10 +30,10 @@ export default function showOverview() {
     console.log(artisteData)
    
   return (
-    <div>
-        <div>
-          <img src={artisteData[0]?.track.share.avatar}/>
-          <h4 className="text-red-600">{artisteData[0]?.track.subtitle}</h4>
+    <div className="artiste-profile">
+        <div className="artiste-img-div flex ">
+          <img src={artisteData[0]?.track.share.avatar} className='artiste-img text-white' alt='artiste-img'/>
+          <h4 className="text-white ml-3">{artisteData[0]?.track.subtitle}</h4>
         </div>
     </div>
   )

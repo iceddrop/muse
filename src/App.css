@@ -196,6 +196,137 @@
   border-radius: 50% ;
   cursor: pointer;
 }
+.artiste-profile{
+ padding-top:80px;
+ padding-left: 30px;
+ font-family: Quicksand;
+ height:1000px;
+}
+.artiste-img{
+  width: 90px;
+  height:90px;
+  border-radius:50%;
+}
+.audio-player{
+  position: fixed;
+  bottom: 0px;
+  --primary: pink;
+  display: flex;
+  width:700px;
+}
+.song-cover-art{
+  width:49px;
+  height:49px;
+  box-shadow: 0px 15px 17px -10px rgba(0, 0, 0, 0.61);
+  border-radius: 14px;
+}
+.duration{
+  margin-left:5px;
+}
+.forward-backward{
+  background: none;
+  border:none;
+  display:flex;
+  align-items:center;
+  font-family: monospace;
+  font-size: 16px;
+  cursor: pointer;
+}
+.forward-backward:hover{
+  color: var(--primary)
+}
+.progress-bar{
+  --bar-bg: #ffe3d4;
+  --seek-before-width:0;
+  --seek-before-color:#ffe2a1;
+  --knobby:#3452a5;
+  --selectedknobby:#26c9c3;
+
+  appearance: none;
+  background: var(--bar-bg);
+  position: relative;
+  width:100%;
+  height:11px;
+  outline:none;
+}
+
+/*progress bar safari*/
+.progress-bar::-webkit-slider-runnable-track{
+  background: var(--bar-bg);
+  position: relative;
+  width:100%;
+  height:11px;
+  outline:none;
+}
+/*progress bar safari*/
+.progress-bar::moz-range-track{
+  background: var(--bar-bg);
+  position: relative;
+  width:100%;
+  height:11px;
+  outline:none;
+}
+.progress-bar::moz-focus-outer{
+  border:0;
+}
+
+/*progress bar safari*/
+.progress-bar::before{
+  content: "";
+  height:11px;
+  width: var(--seek-before-width);
+  background-color:var(--seek-before-color);
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:2;
+  cursor:pointer;
+}
+/*progress-bar firefox*/
+.progress-bar::-moz-range-progress{
+  background-color:var(--seek-before-color);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius:10px;
+  height:11px; 
+}
+/*knobby chrome and sfari*/
+.progress-bar::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  height:15px;
+  width:15px;
+  border-radius:50%;
+  border: none;
+  background-color:var(--knobby);
+  cursor:pointer;
+  position: relative;
+  margin:-2px 0 0 0;
+  z-index: 3;
+  box-sizing: border-box;
+}
+/* knobby while dragging chrome and safari*/
+.progress-bar:active::-webkit-slider-thumb{
+  transform: scale(1.2);
+  background:var(--selectedknobby);
+}
+/* knobby firefox*/
+.progress-bar::-moz-range-thumb{
+  height:15px;
+  width:15px;
+  border-radius:50%;
+  border: transparent;
+  background-color:var(--knobby);
+  cursor:pointer;
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+}
+/* knobby while dragging firefox*/
+.progress-bar:active::-moz-range-thumb{
+  transform: scale(1.2);
+  background:var(--selectedknobby);
+}
 @media only screen and (min-width:319px) and (max-width:320px){
   .search-icon{
     position: relative;

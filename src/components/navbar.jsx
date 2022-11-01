@@ -64,9 +64,7 @@ export default function Navbar() {
        }
   },[])
 console.log(isOpen)
- React.useEffect(()=>{
-  window.localStorage.setItem('searchInput', JSON.stringify(searchInput));
- },[searchInput])
+
 
   return (
     <>
