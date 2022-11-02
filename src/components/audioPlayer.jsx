@@ -1,5 +1,3 @@
-import { BsArrowLeftShort } from "react-icons/bs";
-import { BsArrowRightShort } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import coverart from "../assets/coverart.svg";
@@ -7,11 +5,14 @@ import previous from "../assets/previous.svg";
 import next from "../assets/next.svg";
 import shuffle from "../assets/shuffle.svg";
 import repeatOne from "../assets/repeate-one.svg";
+import volume from '../assets/volume-high.svg'
 import React from "react";
 export default function AudioPlayer() {
   const [isPlaying, setIsPlaying] = React.useState(false);
 
   const [duration, setDuration] = React.useState(0)
+
+  const [currentTime, setCurrentTime] = React.useState(0)
 
   const audioPlayer = React.useRef();
 
@@ -67,12 +68,12 @@ export default function AudioPlayer() {
 
 
   return (
-    <div className="audio-player flex">
+    <div className="audio-player flex justify-between">
       <div className="text-white flex">
         <img src={coverart} className="song-cover-art" alt="song-cover-art" />
-        <div className="">
-          <h4>Song title</h4>
-          <h6>Song artiste</h6>
+        <div className="ml-3">
+          <h4 className="song-title">Song title</h4>
+          <h6 className="artiste-name">Song artiste</h6>
         </div>
       </div>
       <audio
@@ -81,27 +82,27 @@ export default function AudioPlayer() {
         preload="metadata"
       ></audio>
       <div className="flex flex-col">
-        <div className="flex">
-          <button>
+        <div className="flex w-16 control-icons-div">
+          <button className="hidden md:block">
             <img src={shuffle} />
           </button>
-          <button className="forward-backward" onClick={backThirty}>
+          <button className="forward-backward hidden md:block ml-8" onClick={backThirty}>
             <img src={previous} />
           </button>
-          <button onClick={togglePlayPause} className="text-white">
+          <button onClick={togglePlayPause} className=" flex items-center justify-center text-white play-pause mr-4 md:mx-8">
             {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
-          <button className="forward-backward" onClick={forwardThirty}>
+          <button className="forward-backward md:mr-8" onClick={forwardThirty}>
             <img src={next} />
           </button>
-          <button>
+          <button className="hidden md:block ">
             <img src={repeatOne} />
           </button>
         </div>
         {/*Progresbar*/}
         <div>
           <input
-            className="progress-bar"
+            className="progress-bar hidden md:block"
             type="range"
             defaultValue={0}
             ref={progressBar}
@@ -109,15 +110,12 @@ export default function AudioPlayer() {
           />
         </div>
       </div>
-      <div>
-        <input
-          className="progress-bar"
+        <div className="hidden md:flex items-center mb-16">
+          <img src={volume} className='volume mr-2' alt='volume'/>
+          <input
+          className="progress-bar progress-bar-2 hidden md:block"
           type="range"
-          defaultValue={0}
-          ref={progressBar}
-          onChange={changeRange}
-        />
-       
+           />    
       </div>
     </div>
   );

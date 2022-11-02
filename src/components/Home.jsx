@@ -41,7 +41,7 @@ export default function Home(){
                                 <div className='flex'>
                                    <img src={musicdisk} className='music-disk' alt='music-disk'/>
                                    <img src={heart} className='heart-icon ml-2' alt='heart-icon'/>
-                                   <p className='ml-2'>33k likes</p>
+                                   <p className='ml-2 mt-1'>33k likes</p>
                                </div> 
                            </div>   
                      </div>
