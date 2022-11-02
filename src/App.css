@@ -374,6 +374,9 @@
   .audio-player{
     padding-right:40px;
   }
+  .overall{
+    height: 1000px;
+  }
 }
 @media only screen and (min-width:340px){
   .hero-img{
@@ -393,6 +396,9 @@
   }
   .audio-player{
     padding-right:40px;
+  }
+  .overall{
+    height: 1000px;
   }
 }
 @media only screen and (min-width:768px){

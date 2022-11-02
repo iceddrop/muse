@@ -19,6 +19,8 @@ export default function Navbar() {
 
   const {searchInput, setSearchInput} = useContext(SearchContext)
 
+  const {chartDisplayed, setChartDisplayed} = useContext(SearchContext)
+
   {
     /*flip clicked state*/
   }
@@ -92,7 +94,7 @@ console.log(isOpen)
       <div className={clicked ? "block nav-dropdown" : "hidden"}>
         <div className="flex flex-row items-center pt-4 pb-3 px-2 nav-item">
           <FaHome className="bar-icon" />
-          <h6 className="pl-4">Home</h6>
+          <h6 className="pl-4" onClick={()=>{setChartDisplayed(false)}}>Home</h6>
         </div>
         <div className="flex flex-row items-center px-2 py-3 nav-item">
           <BsFillCollectionFill className="bar-icon" />

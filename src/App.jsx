@@ -9,12 +9,13 @@ import AudioPlayer from "./components/audioPlayer";
 import React from "react";
 function App() {
   const [searchInput, setSearchInput] = React.useState("");
-  const [currentSong, setCurrentSong] = React.useState('')
+  const [currentSong, setCurrentSong] = React.useState('');
+  const [chartDisplayed, setChartDisplayed] = React.useState(false)
   return (
     <div className="overall">
       <PlaySongContext.Provider value={{currentSong, setCurrentSong}}>
         <Router>
-          <SearchContext.Provider value={{ searchInput, setSearchInput}}>
+          <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed}}>
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
