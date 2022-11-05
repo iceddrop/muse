@@ -6,15 +6,28 @@
 .overall{
   background:#1D2123;
 }
-.nav{
-  background:#1D2123;
+.default-nav{
+  position : fixed;
+  top : 0;
+  z-index:3;
+  background: #1D2123;
+  width:100%;
+  padding: 30px;
+}
+.navy{
+  position: fixed;
+  top:0;
+  z-index: 3;
+  background:transparent;
+  width: 100%;
+  padding:30px;
 }
 .nav-dropdown{
   height:500px;
+  background:#1D2123;
 }
 .dropdown {
   background-color: white;
-  color:black;
   font-family:Quicksand;
 }
 
@@ -47,7 +60,7 @@
   outline:none
 }
 .search{
-  background:#1D2123;
+  background:transparent;
   color:white;
 }
 .search-icon{
@@ -76,7 +89,6 @@
   margin: 0;
   padding: 0;
   width: 100px;
-  background-color: #1D2123;
   position: fixed;
   top:80px;
   height: 100%;
@@ -119,7 +131,6 @@
 }
 .hero-accomodate{
   position:relative;
- 
 }
 .hero-section-title-2{
   font-family: Quicksand;
@@ -354,6 +365,78 @@
   transform: scale(1.2);
   background:var(--selectedknobby);
 }
+.chart-category{
+  position: relative;
+  top:100px;
+  padding-left: 30px;
+  font-family: Quicksand;
+  }
+  .chart-header{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    color: #A4C7C6;
+  }
+  .chart-paragraph{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #EFEEE0;
+  }
+  .chart-icon-div{
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(5px);
+    border-radius: 32px;
+    padding:5px 2px;
+  }
+  .chart-icon-div p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .chart-duration{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .chart-songs{
+    width:100%;
+  }
+  .chart-songs-div{
+    width:250px;
+    background: rgba(51, 55, 59, 0.37);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    height: 56px;
+  }
+  .chart-coverart{
+    width:39px;
+    height:39px;
+    border-radius:9px;
+  }
+  .white-heart{
+    width:20px;
+    height:20px;
+  }
+  .chart-song-title{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .chart-artsite{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+  }
+  .more-icon{
+    width:14px;
+    height:14px;
+  }
+  .song-duration{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+  }
 @media only screen and (min-width:319px) and (max-width:320px){
   .search-icon{
     position: relative;
@@ -368,6 +451,9 @@
   .music-info{
     margin-top:20px;
   }
+  .chart-img{
+    width: 260px;
+  }
   .chart-card-playtime{
     margin-top: 20px;
   }
@@ -376,6 +462,17 @@
   }
   .overall{
     height: 1000px;
+  }
+  .nav-dropdown{
+    position: relative;
+    right: 24px!important;
+    width:100vw!important;
+    height: 800px;
+  }
+}
+@media only screen and (min-width:340px) and (max-width:430px){
+  .chart-img{
+    width: 370px;
   }
 }
 @media only screen and (min-width:340px){
@@ -399,6 +496,18 @@
   }
   .overall{
     height: 1000px;
+  }
+  .nav-dropdown{
+    position: relative;
+    right: 25px!important;
+    width:100vw!important;
+    height: 800px;
+  }
+  .chart-icon-div{
+    padding:5px 10px;
+  }
+  .chart-songs-div{
+    width:330px;
   }
 }
 @media only screen and (min-width:768px){
@@ -470,6 +579,11 @@
   .progress-bar-2{
     width:100px!important;
   }
+  .chart-category{
+    position: relative;
+    top:80px;
+    margin-left: 70px;
+    }
 }
 @media only screen and (min-width:992px){
   .hero-img{

@@ -12,14 +12,15 @@ import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
 
+
 export default function Navbar() {
   const [artisteData, setArtisteData] = React.useState([]);
 
   const [clicked, setClicked] = React.useState(false);
 
-  const {searchInput, setSearchInput} = useContext(SearchContext)
+  const {searchInput, setSearchInput} = useContext(SearchContext);
 
-  const {chartDisplayed, setChartDisplayed} = useContext(SearchContext)
+  const {chartDisplayed, setChartDisplayed} = useContext(SearchContext);
 
   {
     /*flip clicked state*/
@@ -67,10 +68,10 @@ export default function Navbar() {
   },[])
 console.log(isOpen)
 
-
+ 
   return (
     <>
-    <nav className="nav p-4 fixed-top">
+    <nav className={chartDisplayed ? 'navy' : 'default-nav'}>
       <div className="flex flex-col">
         <div className="flex">
           <img src={menu} onClick={clickAct} className="hamburger md:hidden" />
