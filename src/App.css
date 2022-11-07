@@ -557,7 +557,8 @@
     min-width: 270px!important;
   }
    .rectangle{
-    height: 60px;
+    height: 62px;
+    border-radius: 10px;
    }
    .chart-card-playtime{
     margin-top: 15px;
@@ -587,6 +588,10 @@
     position: relative;
     top:80px;
     margin-left: 70px;
+    }
+    .chart-img{
+      width: 284px;
+      height: 288px;
     }
 }
 @media only screen and (min-width:992px){

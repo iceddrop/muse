@@ -12,8 +12,12 @@ import LeadImage from './assets/Lead-image.svg'
 function App() {
   const [searchInput, setSearchInput] = React.useState("");
   const [currentSong, setCurrentSong] = React.useState('');
-  const [chartDisplayed, setChartDisplayed] = React.useState(false)
-
+  const [chartDisplayed, setChartDisplayed] = React.useState(false);
+  const [usHopChart, setUsHopChart] = React.useState([]);
+  const [naijaChart, setNaijaChart] = React.useState([])
+  const [chartImg, setChartImg] = React.useState('');
+  const [chartTitle, setChartTitle] = React.useState('')
+  const [alternativeChart, setAlternativeChart] = React.useState([]);
   const background = {
     backgroundImage: `url(${LeadImage})`,
     backgroundRepeat: 'no-repeat',
@@ -33,7 +37,7 @@ function App() {
       <div style={chartDisplayed ? overlay : noBg}>
           <PlaySongContext.Provider value={{currentSong, setCurrentSong}}>
             <Router>
-              <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed}}>
+              <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart}}>
                 <Navbar />
                 <Routes>
                   <Route path="/" element={<Home />} />

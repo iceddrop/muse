@@ -22,6 +22,7 @@ export default function Navbar() {
 
   const {chartDisplayed, setChartDisplayed} = useContext(SearchContext);
 
+
   {
     /*flip clicked state*/
   }
@@ -36,8 +37,6 @@ export default function Navbar() {
   function handleChange(event) {
     setSearchInput(event.target.value);
   }
-
-  console.log(artisteData);
 
   const keyDownHandler = (event) => {
     if (event.key === "Enter") {
@@ -66,9 +65,7 @@ export default function Navbar() {
          document.removeEventListener('click', handleClickOutside, true)
        }
   },[])
-console.log(isOpen)
 
- 
   return (
     <>
     <nav className={chartDisplayed ? 'navy' : 'default-nav'}>

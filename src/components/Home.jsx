@@ -17,7 +17,54 @@ import ChartOverview from "./chartOverview";
 
 export default function Home() {
   const { chartDisplayed, setChartDisplayed } = useContext(SearchContext);
+  const { usHopChart, setUsHopChart } = useContext(SearchContext);
+  const {chartImg, setChartImg} = useContext(SearchContext);
+  const {chartTitle, setChartTitle} = useContext(SearchContext);
+  const {naijaChart, setNaijaChart}  = useContext(SearchContext);
+  const {alternativeChart, setAlternativeChart} = useContext(SearchContext);
 
+  React.useEffect(()=>{
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '036795ec2amsh8c2b98ef8a502acp146724jsn6f3538b26522',
+        'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
+      }
+    };
+    
+    fetch('https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=HIP_HOP_RAP', options)
+      .then(response => response.json())
+      .then(response => setUsHopChart(response))
+      .catch(err => console.error(err));
+
+    fetch('https://shazam-core.p.rapidapi.com/v1/charts/country?country_code=NG', options)
+	.then(response => response.json())
+	.then(response => setNaijaChart(response))
+	.catch(err => console.error(err));
+  fetch('https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=ALTERNATIVE', options)
+	.then(response => response.json())
+	.then(response => setAlternativeChart(response))
+	.catch(err => console.error(err));
+  },[]) 
+
+  function getUsHopChart(){
+    setChartImg(usHopChart[1]?.images?.coverart),
+    setChartTitle('Out the mud : Top Hip Hop Chart in the US')
+  }
+
+  function getNaijaChart(){
+    setChartImg(naijaChart[4]?.images?.coverart),
+    setChartTitle('Gbedu : Top Naija')
+  }
+
+  function getAlternativeChart(){
+    setChartImg(alternativeChart[4]?.images?.coverart),
+    setChartTitle('Alternative Crave')
+  }
+  console.log(usHopChart);
+  console.log(naijaChart)
+  console.log(chartImg)
+  
   return (
     <section>
       <div className="sidebar  flex-col items-center hidden md:flex">
@@ -89,7 +136,7 @@ export default function Home() {
                 <div className="music-chart-card flex justify-between p-3 lg:ml-4 cursor-pointer">
                   <div className="lg:flex">
                     <img
-                      src={rectangle}
+                      src='https://is3-ssl.mzstatic.com/image/thumb/Music122/v4/a0/d5/f2/a0d5f2c8-2415-a1e7-533b-c19ec5934e07/5059449096629.png/400x400cc.jpg'
                       className="rectangle"
                       alt="music-artwork"
                     />
@@ -97,12 +144,12 @@ export default function Home() {
                       <h3
                         className="chart-card-header"
                         onClick={() => {
-                          setChartDisplayed(true);
+                          setChartDisplayed(true); getNaijaChart()
                         }}
                       >
-                        Golden age of 90's
+                        Gbedu : Top Naija
                       </h3>
-                      <h6 className="chart-card-artist">Nivarna</h6>
+                      <h6 className="chart-card-artist">Jonny Drille</h6>
                       <p className=" chart-card-playtime">2:10:45</p>
                     </div>
                   </div>
@@ -117,7 +164,7 @@ export default function Home() {
                 <div className="music-chart-card flex justify-between p-3 ml-4 cursor-pointer">
                   <div className="lg:flex">
                     <img
-                      src={rectangle}
+                      src='https://is4-ssl.mzstatic.com/image/thumb/Music112/v4/e7/21/15/e7211596-4581-c1c6-0300-b9c300148661/22UMGIM95736.rgb.jpg/400x400cc.jpg'
                       className="rectangle"
                       alt="music-artwork"
                     />
@@ -125,12 +172,12 @@ export default function Home() {
                       <h3
                         className="chart-card-header"
                         onClick={() => {
-                          setChartDisplayed(true);
+                          setChartDisplayed(true); getUsHopChart()
                         }}
                       >
-                        Golden age of 90's
+                        Out the mud : Top Hip Hop Chart in the US 
                       </h3>
-                      <h6 className="chart-card-artist">Nivarna</h6>
+                      <h6 className="chart-card-artist">YG</h6>
                       <p className="chart-card-playtime">2:10:45</p>
                     </div>
                   </div>
@@ -145,7 +192,7 @@ export default function Home() {
                 <div className="music-chart-card flex justify-between p-3 ml-4 cursor-pointer">
                   <div className="lg:flex">
                     <img
-                      src={rectangle}
+                      src="https://is4-ssl.mzstatic.com/image/thumb/Music115/v4/95/fd/b9/95fdb9b2-6d2b-92a6-97f2-51c1a6d77f1a/00602527874609.rgb.jpg/400x400cc.jpg"
                       className="rectangle"
                       alt="music-artwork"
                     />
@@ -153,10 +200,10 @@ export default function Home() {
                       <h3
                         className="chart-card-header"
                         onClick={() => {
-                          setChartDisplayed(true);
+                          setChartDisplayed(true); getAlternativeChart()
                         }}
                       >
-                        Golden age of 90's
+                        Alternative Crave
                       </h3>
                       <h6 className="chart-card-artist">Nivarna</h6>
                       <p className="chart-card-playtime">2:10:45</p>
