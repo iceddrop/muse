@@ -1,6 +1,7 @@
 import video from "../assets/videos.svg";
 import profile from "../assets/profile.svg";
 import logout from "../assets/Logout.svg";
+import ChartOverview from "./ChartOverview.jsx"
 import { FaHome } from "react-icons/fa";
 import { BsFillCollectionFill } from "react-icons/bs";
 import { IoMdRadio } from "react-icons/io";
@@ -12,7 +13,6 @@ import smallHeroImg from "../assets/homesecmobile.svg";
 import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
-import ChartOverview from "./ChartOverview";
 
 
 export default function Home() {
