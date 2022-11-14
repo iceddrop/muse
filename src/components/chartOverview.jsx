@@ -4,7 +4,7 @@ import playTwo from '../assets/chartPlay.svg'
 import { useContext } from "react";
 import ChartSongs from './ChartSongs'
 import { SearchContext } from "../contexts/SearchContext";
-export default function showOverview(){
+export default function ChartOverview(){
     const {chartImg, setChartImg} = useContext(SearchContext)
     const {chartTitle, setChartTitle} = useContext(SearchContext)
     const {chartData, setChartData} = useContext(SearchContext)
