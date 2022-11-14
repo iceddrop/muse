@@ -25,7 +25,7 @@ export default function Home() {
   const {chartData, setChartData} = useContext(SearchContext);
   const options = {
     method: 'GET',
-    headers: {
+   headers: {
       'X-RapidAPI-Key': '26de8eae8cmshf94dce60944bca6p17a2e1jsn726a251f07c4',
       'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
 }

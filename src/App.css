@@ -481,7 +481,7 @@
     border-radius: 10px;
   }
 }
-@media only screen and (min-width:340px) and (max-width:430px){
+@media only screen and (min-width:340px) and (max-width:600px){
   .chart-img{
     width: 370px;
   }
