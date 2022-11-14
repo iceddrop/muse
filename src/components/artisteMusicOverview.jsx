@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
 
 
-export default function showOverview() {
+export default function ArtisteMusicOverview() {
     const {searchInput} = useContext(SearchContext)
     console.log(searchInput)
     const [artisteData, setArtisteData] = React.useState([])

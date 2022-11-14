@@ -3,7 +3,7 @@ import whiteHeart from '../assets/white-heart.svg'
 import coverart from '../assets/coverart.svg'
 import more from '../assets/more-vertical.svg'
 
-export default function chartSongs(props){
+export default function ChartSongs(props){
  
     return(
         <div className='chart-songs-div flex justify-between items-center px-2 mt-4'>
