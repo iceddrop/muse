@@ -4,14 +4,12 @@ import ArtisteMusicOverview from "./components/artisteMusicOverview";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SearchContext } from "./contexts/SearchContext";
-import { PlaySongContext } from "./contexts/PlaySongContext";
 import AudioPlayer from "./components/audioPlayer";
 import React from "react";
 import LeadImage from './assets/Lead-image.svg'
 
 function App() {
   const [searchInput, setSearchInput] = React.useState("");
-  const [currentSong, setCurrentSong] = React.useState('');
   const [chartDisplayed, setChartDisplayed] = React.useState(false);
   const [usHopChart, setUsHopChart] = React.useState([]);
   const [naijaChart, setNaijaChart] = React.useState([])
@@ -36,7 +34,7 @@ function App() {
   return (
     <div style={chartDisplayed ? background : noBg}>
       <div style={chartDisplayed ? overlay : noBg}>
-          <PlaySongContext.Provider value={{currentSong, setCurrentSong}}>
+ 
             <Router>
               <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData}}>
                 <Navbar />
@@ -50,7 +48,7 @@ function App() {
               </SearchContext.Provider>
             </Router>
             <AudioPlayer />
-          </PlaySongContext.Provider>
+
       </div>
     </div>
   );

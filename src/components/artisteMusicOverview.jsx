@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
-import { PlaySongContext } from "../contexts/PlaySongContext";
+
 
 export default function showOverview() {
     const {searchInput} = useContext(SearchContext)
@@ -11,7 +11,6 @@ export default function showOverview() {
     const [songsData, setSongsData] = React.useState([])
 
      
-    const {currentSong, setCurrentSong} = useContext(PlaySongContext)
 
    React.useEffect(()=>{
     const options = {
