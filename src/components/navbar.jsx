@@ -14,7 +14,7 @@ import { SearchContext } from "../contexts/SearchContext";
 
 
 export default function Navbar() {
-  const [artisteData, setArtisteData] = React.useState([]);
+   const [artisteData, setArtisteData] = React.useState([]);
 
   const [clicked, setClicked] = React.useState(false);
 

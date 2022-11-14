@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
-import { PlaySongContext } from "../contexts/playSongContext";
+import { PlaySongContext } from "../contexts/PlaySongContext";
 
 export default function showOverview() {
     const {searchInput} = useContext(SearchContext)

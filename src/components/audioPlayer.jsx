@@ -78,7 +78,7 @@ export default function AudioPlayer() {
       </div>
       <audio
         ref={audioPlayer}
-        src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/a6/53/1e/a6531efa-397c-eb73-ecab-9b2790c1471e/mzaf_7698442056504214822.plus.aac.ep.m4a"
+        src={kill}
         preload="metadata"
       ></audio>
       <div className="flex flex-col">

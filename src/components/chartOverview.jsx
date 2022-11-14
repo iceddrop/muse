@@ -1,15 +1,17 @@
-import LeadImage from '../assets/Lead-image.svg'
 import MusicSquare from '../assets/music-square-add.svg'
 import redHeart from '../assets/red-heart.svg'
 import playTwo from '../assets/chartPlay.svg'
-import whiteHeart from '../assets/white-heart.svg'
-import coverart from '../assets/coverart.svg'
-import more from '../assets/more-vertical.svg'
 import { useContext } from "react";
+import ChartSongs from './ChartSongs'
 import { SearchContext } from "../contexts/SearchContext";
 export default function showOverview(){
     const {chartImg, setChartImg} = useContext(SearchContext)
     const {chartTitle, setChartTitle} = useContext(SearchContext)
+    const {chartData, setChartData} = useContext(SearchContext)
+
+    const songTitleEl = chartData.map(data =>(
+        <ChartSongs title={data.title} artiste={data.subtitle} coverarts={data.images?.coverart} audio={data.hub?.actions[1].uri} />
+    ))
     return(
        <section className="chart-category text-white pr-8">
         <div className=' md:flex'>
@@ -40,20 +42,7 @@ export default function showOverview(){
             </div>
         </div>
         <div className='mt-5 chart-songs'>
-            <div className='chart-songs-div flex justify-between items-center px-2'>
-                <div className='flex'>
-                    <img src={coverart} className='chart-coverart' alt='song-coverart'/>
-                    <img src={whiteHeart} className='hidden md:block white-heart ml-4 mt-2' alt='white-heart'/>
-                </div>
-                <div className='md:flex justify-between md:w-80 md:itrems-center'>
-                    <h3 className='chart-song-title'>Song title</h3>
-                    <h5 className='chart-artsite'>Artist</h5>
-                </div>
-                <div className='flex flex-col  md:flex md:flex-row-reverse md:w-60 md:justify-between md:pr-4'>
-                   <img src={more} className='more-icon' alt='more-icon'/>
-                    <p className='song-duration'>4:17</p>
-                </div>
-            </div>
+            {songTitleEl}
         </div>
        </section>
     )

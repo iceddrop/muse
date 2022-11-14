@@ -7,13 +7,13 @@ import { IoMdRadio } from "react-icons/io";
 import heart from "../assets/Heart.svg";
 import musicdisk from "../assets/musiccards.svg";
 import heart2 from "../assets/Heart2.svg";
-import rectangle from "../assets/Rectangle.svg";
 import heroImg from "../assets/HeroSection.svg";
 import smallHeroImg from "../assets/homesecmobile.svg";
 import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
-import ChartOverview from "./chartOverview";
+import ChartOverview from "./ChartOverview";
+import.meta.hot
 
 export default function Home() {
   const { chartDisplayed, setChartDisplayed } = useContext(SearchContext);
@@ -22,44 +22,47 @@ export default function Home() {
   const {chartTitle, setChartTitle} = useContext(SearchContext);
   const {naijaChart, setNaijaChart}  = useContext(SearchContext);
   const {alternativeChart, setAlternativeChart} = useContext(SearchContext);
-
+  const {chartData, setChartData} = useContext(SearchContext);
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '26de8eae8cmshf94dce60944bca6p17a2e1jsn726a251f07c4',
+      'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
+}
+  };
   React.useEffect(()=>{
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': '036795ec2amsh8c2b98ef8a502acp146724jsn6f3538b26522',
-        'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
-      }
-    };
-    
     fetch('https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=HIP_HOP_RAP', options)
       .then(response => response.json())
       .then(response => setUsHopChart(response))
-      .catch(err => console.error(err));
+      .catch(err =>  console.error(err)),
 
     fetch('https://shazam-core.p.rapidapi.com/v1/charts/country?country_code=NG', options)
-	.then(response => response.json())
-	.then(response => setNaijaChart(response))
-	.catch(err => console.error(err));
-  fetch('https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=ALTERNATIVE', options)
-	.then(response => response.json())
-	.then(response => setAlternativeChart(response))
-	.catch(err => console.error(err));
+    .then(response => response.json())
+    .then(response => setNaijaChart(response))
+    .catch(err => console.error(err)),
+
+    fetch('https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=ALTERNATIVE', options)
+    .then(response => response.json())
+    .then(response => setAlternativeChart(response))
+    .catch(err => console.error(err))
   },[]) 
 
-  function getUsHopChart(){
-    setChartImg(usHopChart[1]?.images?.coverart),
-    setChartTitle('Out the mud : Top Hip Hop Chart in the US')
-  }
+    function getUsHopChart(){
+     setChartImg(usHopChart[1]?.images?.coverart),
+     setChartTitle('Out the mud : Top Hip Hop Chart in the US'),
+     setChartData(usHopChart)
+   }
 
   function getNaijaChart(){
     setChartImg(naijaChart[4]?.images?.coverart),
-    setChartTitle('Gbedu : Top Naija')
+    setChartTitle('Gbedu :   Top Naija'),
+    setChartData(naijaChart)
   }
 
   function getAlternativeChart(){
     setChartImg(alternativeChart[4]?.images?.coverart),
-    setChartTitle('Alternative Crave')
+    setChartTitle('Alternative Crave'),
+    setChartData(alternativeChart)
   }
   console.log(usHopChart);
   console.log(naijaChart)
@@ -99,7 +102,7 @@ export default function Home() {
       {chartDisplayed ? (
         <ChartOverview />
       ) : (
-        <div className="hero-div lg:flex">
+         <div className="hero-div lg:flex">
           <div className="hero-accomodate">
             <img src={smallHeroImg} className="md:hidden hero-img mb-4" />
             <img src={heroImg} className="hero-img hidden md:flex " />
@@ -108,7 +111,7 @@ export default function Home() {
               <div className="mini-hero-div flex flex-col justify-between">
                 <div className="">
                   <h1 className="mb-3 hero-section-title-2">R & B Hits</h1>
-                  <p className="mb-4 hero-paragraph">
+                    <p className="mb-4 hero-paragraph">
                     All mine, Lie again, Petty call me everyday, Out of time, No
                     love, Bad habit and so much more.
                   </p>
@@ -175,7 +178,7 @@ export default function Home() {
                           setChartDisplayed(true); getUsHopChart()
                         }}
                       >
-                        Out the mud : Top Hip Hop Chart in the US 
+                        Out the mud 
                       </h3>
                       <h6 className="chart-card-artist">YG</h6>
                       <p className="chart-card-playtime">2:10:45</p>

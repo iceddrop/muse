@@ -4,7 +4,7 @@ import ArtisteMusicOverview from "./components/artisteMusicOverview";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SearchContext } from "./contexts/SearchContext";
-import { PlaySongContext } from "./contexts/playSongContext";
+import { PlaySongContext } from "./contexts/PlaySongContext";
 import AudioPlayer from "./components/audioPlayer";
 import React from "react";
 import LeadImage from './assets/Lead-image.svg'
@@ -18,11 +18,12 @@ function App() {
   const [chartImg, setChartImg] = React.useState('');
   const [chartTitle, setChartTitle] = React.useState('')
   const [alternativeChart, setAlternativeChart] = React.useState([]);
+  const [chartData, setChartData] = React.useState([]);
   const background = {
     backgroundImage: `url(${LeadImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize:'cover',
-    height:'1000px'
+    height:'5000px'
  }
  const noBg ={
     backgroundColor: '#1D2123'
@@ -37,7 +38,7 @@ function App() {
       <div style={chartDisplayed ? overlay : noBg}>
           <PlaySongContext.Provider value={{currentSong, setCurrentSong}}>
             <Router>
-              <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart}}>
+              <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData}}>
                 <Navbar />
                 <Routes>
                   <Route path="/" element={<Home />} />
