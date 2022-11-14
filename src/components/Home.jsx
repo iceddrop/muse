@@ -13,7 +13,7 @@ import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
 import ChartOverview from "./ChartOverview";
-import.meta.hot
+
 
 export default function Home() {
   const { chartDisplayed, setChartDisplayed } = useContext(SearchContext);
