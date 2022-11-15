@@ -1,7 +1,7 @@
 import video from "../assets/videos.svg";
 import profile from "../assets/profile.svg";
 import logout from "../assets/Logout.svg";
-import ChartOverview from "./ChartOverview"
+import ChartOverview from "../components/ChartOverview"
 import { FaHome } from "react-icons/fa";
 import { BsFillCollectionFill } from "react-icons/bs";
 import { IoMdRadio } from "react-icons/io";
