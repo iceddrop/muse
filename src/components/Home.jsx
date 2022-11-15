@@ -1,7 +1,7 @@
 import video from "../assets/videos.svg";
 import profile from "../assets/profile.svg";
 import logout from "../assets/Logout.svg";
-import ChartOverview from "../components/ChartOverview"
+import ChartSongs from './ChartSongs'
 import { FaHome } from "react-icons/fa";
 import { BsFillCollectionFill } from "react-icons/bs";
 import { IoMdRadio } from "react-icons/io";
@@ -13,6 +13,10 @@ import smallHeroImg from "../assets/homesecmobile.svg";
 import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
+import MusicSquare from '../assets/music-square-add.svg'
+import redHeart from '../assets/red-heart.svg'
+import playTwo from '../assets/chartPlay.svg'
+
 
 
 export default function Home() {
@@ -23,12 +27,14 @@ export default function Home() {
   const {naijaChart, setNaijaChart}  = useContext(SearchContext);
   const {alternativeChart, setAlternativeChart} = useContext(SearchContext);
   const {chartData, setChartData} = useContext(SearchContext);
+
   const options = {
     method: 'GET',
    headers: {
-      'X-RapidAPI-Key': '26de8eae8cmshf94dce60944bca6p17a2e1jsn726a251f07c4',
+     'X-RapidAPI-Key': '26de8eae8cmshf94dce60944bca6p17a2e1jsn726a251f07c4',
       'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
-}
+
+   }
   };
   React.useEffect(()=>{
     fetch('https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=HIP_HOP_RAP', options)
@@ -64,6 +70,11 @@ export default function Home() {
     setChartTitle('Alternative Crave'),
     setChartData(alternativeChart)
   }
+
+  const songTitleEl = chartData.map(data =>(
+    <ChartSongs key={data.key} title={data.title} artiste={data.subtitle} coverarts={data.images?.coverart}/>
+  ))
+
   console.log(usHopChart);
   console.log(naijaChart)
   console.log(chartImg)
@@ -100,7 +111,40 @@ export default function Home() {
         </div>
       </div>
       {chartDisplayed ? (
-        <ChartOverview />
+                <section className="chart-category text-white pr-8">
+                <div className=' md:flex'>
+                    <div className='md:flex'>
+                        <img src={chartImg} className='chart-img rounded-3xl' alt='chart-image'/>
+                        <div className=' mt-4 md:pt-14 md:ml-6 xl:pt-20 lg:pr-10'>
+                            <h2 className='chart-header'>{chartTitle}</h2>
+                            <p className='chart-paragraph mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellat sapiente sequi dolore commodi.</p>
+                            <div className='flex mt-1 chart-duration'>
+                                <p>64 songs -</p>
+                                <p> 16 hrs+</p>
+                            </div>
+                            <div className='flex mt-4'>
+                                <div className='flex chart-icon-div cursor-pointer'>
+                                    <img src={redHeart} className='red-heart' alt='heart-icon'/>
+                                    <p className='ml-2'>Play all</p>
+                                </div>
+                                <div className='flex chart-icon-div ml-3 cursor-pointer'>
+                                    <img src={MusicSquare} className='' alt='music-icon'/>
+                                    <p className='ml-2'>Add to collection</p>
+                                </div>
+                                <div className='flex chart-icon-div ml-3 '>
+                                    <img src={playTwo} className='' alt='play-icon'/>
+                                    <p className='ml-2 md:hidden'>Like</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='mt-5 chart-songs'>
+                    {songTitleEl}
+                </div>
+              </section>
+        
+         
       ) : (
          <div className="hero-div lg:flex">
           <div className="hero-accomodate">
