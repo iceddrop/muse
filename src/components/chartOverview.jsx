@@ -10,7 +10,7 @@ export default function ChartOverview(){
     const {chartData, setChartData} = useContext(SearchContext)
 
     const songTitleEl = chartData.map(data =>(
-        <ChartSongs key={data.key} title={data.title} artiste={data.subtitle} coverarts={data.images?.coverart} audio={data.hub?.actions[1].uri} />
+        <ChartSongs key={data.key} title={data.title} artiste={data.subtitle} coverarts={data.images?.coverart}/>
     ))
     return(
        <section className="chart-category text-white pr-8">
