@@ -1,14 +1,23 @@
-
 import whiteHeart from '../assets/white-heart.svg'
-import coverart from '../assets/coverart.svg'
 import more from '../assets/more-vertical.svg'
+import { useContext } from "react";
+import { SearchContext } from "../contexts/SearchContext";
 
 export default function ChartSongs(props){
- 
+    const {audio, setAudio} = useContext(SearchContext)
+    const {songTitle, setSongTitle} = useContext(SearchContext)
+    const {artiste, setArtiste} = useContext(SearchContext)
+   function playSong(){
+      setAudio(props.audio)
+      setSongTitle(props.title)
+      setArtiste(props.artiste)
+   }
+
+
     return(
-        <div className='chart-songs-div flex justify-between items-center px-2 mt-4'>
+        <div className='chart-songs-div flex justify-between items-center px-2 mt-4' >
         <div className='flex'>
-            <img src={props.coverarts} className='chart-coverart' alt='song-coverart'/>
+            <img src={props.coverarts} className='chart-coverart cursor-pointer' alt='song-coverart' onClick={playSong}/>
             <img src={whiteHeart} className='hidden lg:block white-heart ml-4 mt-2' alt='white-heart'/>
         </div>
         <div className='md:flex justify-between md:w-80 md:itrems-center'>

@@ -5,7 +5,7 @@ import { SearchContext } from "../contexts/SearchContext";
 
 export default function ArtisteMusicOverview() {
     const {searchInput} = useContext(SearchContext)
-    console.log(searchInput)
+   
     const [artisteData, setArtisteData] = React.useState([])
 
     const [songsData, setSongsData] = React.useState([])

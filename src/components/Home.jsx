@@ -31,9 +31,8 @@ export default function Home() {
   const options = {
     method: 'GET',
    headers: {
-     'X-RapidAPI-Key': '26de8eae8cmshf94dce60944bca6p17a2e1jsn726a251f07c4',
-      'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
-
+		'X-RapidAPI-Key': '4d33a898f6msha3f74157485f22bp1a7795jsn925c23c4c571',
+		'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
    }
   };
   React.useEffect(()=>{
@@ -60,7 +59,7 @@ export default function Home() {
    }
 
   function getNaijaChart(){
-    setChartImg(naijaChart[4]?.images?.coverart),
+    setChartImg(naijaChart[0]?.images?.coverart),
     setChartTitle('Gbedu :   Top Naija'),
     setChartData(naijaChart)
   }
@@ -71,14 +70,13 @@ export default function Home() {
     setChartData(alternativeChart)
   }
 
+ 
+
   const songTitleEl = chartData.map(data =>(
-    <ChartSongs key={data.key} title={data.title} artiste={data.subtitle} coverarts={data.images?.coverart}/>
+    <ChartSongs key={data.key} title={data.title} artiste={data.subtitle} coverarts={data.images?.coverart} audio={ data.hub.actions[1]?.uri}/>
   ))
 
-  console.log(usHopChart);
-  console.log(naijaChart)
-  console.log(chartImg)
-  
+
   return (
     <section>
       <div className="sidebar  flex-col items-center hidden md:flex">

@@ -7,6 +7,8 @@ import shuffle from "../assets/shuffle.svg";
 import repeatOne from "../assets/repeate-one.svg";
 import volume from '../assets/volume-high.svg'
 import React from "react";
+import { useContext } from "react";
+import { SearchContext } from "../contexts/SearchContext";
 export default function AudioPlayer() {
   const [isPlaying, setIsPlaying] = React.useState(false);
 
@@ -19,6 +21,12 @@ export default function AudioPlayer() {
   const progressBar = React.useRef();
 
   const animationRef = React.useRef();
+
+  const {audio, setAudio} = useContext(SearchContext)
+
+  const {songTitle, setSongTitle} = useContext(SearchContext)
+
+  const {artiste, setArtiste} = useContext(SearchContext)
 
   React.useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -66,19 +74,19 @@ export default function AudioPlayer() {
     animationRef.current = requestAnimationFrame(whilePlaying);
   }
 
-
+  console.log(audio)
   return (
     <div className="audio-player flex justify-between">
       <div className="text-white flex">
         <img src={coverart} className="song-cover-art" alt="song-cover-art" />
         <div className="ml-3">
-          <h4 className="song-title">Song title</h4>
-          <h6 className="artiste-name">Song artiste</h6>
+          <h4 className="song-title">{songTitle}</h4>
+          <h6 className="artiste-name">{artiste}</h6>
         </div>
       </div>
       <audio
         ref={audioPlayer}
-        src='https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/2f/61/dd/2f61ddd5-8387-a233-3c12-7da105dc5808/mzaf_14470070219437854763.plus.aac.ep.m4a'
+        src={audio}
         preload="metadata"
       ></audio>
       <div className="flex flex-col">
