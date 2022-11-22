@@ -10,13 +10,14 @@ import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
 export default function AudioPlayer() {
-  const [isPlaying, setIsPlaying] = React.useState(false);
+  const {isPlaying, setIsPlaying} = useContext(SearchContext)
+
+    
+  const {audioPlayer} = useContext(SearchContext)
 
   const [duration, setDuration] = React.useState(0)
 
   const [currentTime, setCurrentTime] = React.useState(0)
-
-  const audioPlayer = React.useRef();
 
   const progressBar = React.useRef();
 
@@ -27,6 +28,9 @@ export default function AudioPlayer() {
   const {songTitle, setSongTitle} = useContext(SearchContext)
 
   const {artiste, setArtiste} = useContext(SearchContext)
+
+  const {chartData, setChartData} = useContext(SearchContext)
+
 
   React.useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -73,8 +77,9 @@ export default function AudioPlayer() {
     setCurrentTime(progressBar.current.value);
     animationRef.current = requestAnimationFrame(whilePlaying);
   }
-
-  console.log(audio)
+  
+  const songIndex = chartData.indexOf(audio)
+console.log('songIndex')
   return (
     <div className="audio-player flex justify-between">
       <div className="text-white flex">

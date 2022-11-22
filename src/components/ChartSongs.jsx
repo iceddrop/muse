@@ -2,12 +2,31 @@ import whiteHeart from '../assets/white-heart.svg'
 import more from '../assets/more-vertical.svg'
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
+import React from 'react'
 
 export default function ChartSongs(props){
-    const {audio, setAudio} = useContext(SearchContext)
-    const {songTitle, setSongTitle} = useContext(SearchContext)
-    const {artiste, setArtiste} = useContext(SearchContext)
+    const {setAudio} = useContext(SearchContext)
+    const {setSongTitle} = useContext(SearchContext)
+    const {setArtiste} = useContext(SearchContext)
+    const {audioPlayer} = useContext(SearchContext)
+    const {isPlaying, setIsPlaying} = useContext(SearchContext)
+    const {chartData} = useContext(SearchContext)
+
+    const songArr = chartData.map(data => data?.hub?.actions?.[1]?.uri)
+    function togglePlayPause() {
+        const prevVal = isPlaying;
+        setIsPlaying(!prevVal);
+        if (!prevVal) {
+          audioPlayer.current.play();
+          
+        } else {
+          audioPlayer.current.pause();
+        
+        }
+      }
+console.log(songArr)
    function playSong(){
+    togglePlayPause()
       setAudio(props.audio)
       setSongTitle(props.title)
       setArtiste(props.artiste)

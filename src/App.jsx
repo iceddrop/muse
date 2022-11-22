@@ -21,6 +21,9 @@ function App() {
   const [audio, setAudio] = React.useState('');
   const [songTitle, setSongTitle] = React.useState('');
   const [artiste, setArtiste] = React.useState('');
+  const audioPlayer = React.useRef()
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [songIndex, setSongIndex] = React.useState()
   const background = {
     backgroundImage: `url(${LeadImage})`,
     backgroundRepeat: 'no-repeat',
@@ -38,7 +41,7 @@ function App() {
   return (
     <div style={chartDisplayed ? background : noBg}>
       <div style={chartDisplayed ? overlay : noBg}>
-      <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData,audio, setAudio,songTitle, setSongTitle,artiste, setArtiste }}>
+      <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData,audio, setAudio,songTitle, setSongTitle,artiste, setArtiste,audioPlayer,isPlaying, setIsPlaying,songIndex, setSongIndex}}>
             <Router>
                 <Navbar />
                 <Routes>
