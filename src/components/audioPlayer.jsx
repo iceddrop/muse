@@ -23,13 +23,11 @@ export default function AudioPlayer() {
 
   const animationRef = React.useRef();
 
-  const {audio, setAudio} = useContext(SearchContext)
-
-  const {songTitle, setSongTitle} = useContext(SearchContext)
-
-  const {artiste, setArtiste} = useContext(SearchContext)
-
   const {chartData, setChartData} = useContext(SearchContext)
+
+  const {songIndex,setSongIndex} = useContext(SearchContext)
+
+  const {defaultCoverart, setDefaultCoverart} = useContext(SearchContext)
 
 
   React.useEffect(() => {
@@ -77,15 +75,37 @@ export default function AudioPlayer() {
     setCurrentTime(progressBar.current.value);
     animationRef.current = requestAnimationFrame(whilePlaying);
   }
+
+  function prevSong(){
+    if (songIndex === 0){
+      setSongIndex(chartData.length - 1)
+    }else{
+      setSongIndex(prevVal => prevVal - 1)
+    }
+    setDefaultCoverart(chartData?.[songIndex]?.images?.coverart)
+  }
+
+  function nextSong(){
+    if (songIndex === chartData.length - 1){
+      setSongIndex(0)
+    }else{
+      setSongIndex(prevVal => prevVal + 1)
+    }
+    setDefaultCoverart(chartData?.[songIndex]?.images?.coverart)
+  }
+
   
-  const songIndex = chartData.indexOf(audio)
-console.log('songIndex')
+ const audio = chartData?.[songIndex]?.hub?.actions?.[1]?.uri
+ const audioTitle = chartData?.[songIndex]?.title
+ const artiste = chartData?.[songIndex]?.subtitle
+
+  console.log(audioTitle)
   return (
     <div className="audio-player flex justify-between">
       <div className="text-white flex">
-        <img src={coverart} className="song-cover-art" alt="song-cover-art" />
+        <img src={defaultCoverart} className="song-cover-art" alt="song-cover-art" />
         <div className="ml-3">
-          <h4 className="song-title">{songTitle}</h4>
+          <h4 className="song-title">{audioTitle}</h4>
           <h6 className="artiste-name">{artiste}</h6>
         </div>
       </div>
@@ -99,13 +119,13 @@ console.log('songIndex')
           <button className="hidden md:block">
             <img src={shuffle} />
           </button>
-          <button className="forward-backward hidden md:block ml-8" onClick={backThirty}>
+          <button className="forward-backward hidden md:block ml-8" onClick={prevSong}>
             <img src={previous} />
           </button>
           <button onClick={togglePlayPause} className=" flex items-center justify-center text-white play-pause mr-4 md:mx-8">
             {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
-          <button className="forward-backward md:mr-8" onClick={forwardThirty}>
+          <button className="forward-backward md:mr-8" onClick={nextSong}>
             <img src={next} />
           </button>
           <button className="hidden md:block ">

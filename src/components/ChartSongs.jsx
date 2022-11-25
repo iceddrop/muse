@@ -11,8 +11,9 @@ export default function ChartSongs(props){
     const {audioPlayer} = useContext(SearchContext)
     const {isPlaying, setIsPlaying} = useContext(SearchContext)
     const {chartData} = useContext(SearchContext)
+    const {songIndex,setSongIndex} = useContext(SearchContext)
+    const {defaultCoverart, setDefaultCoverart} = useContext(SearchContext)
 
-    const songArr = chartData.map(data => data?.hub?.actions?.[1]?.uri)
     function togglePlayPause() {
         const prevVal = isPlaying;
         setIsPlaying(!prevVal);
@@ -24,12 +25,12 @@ export default function ChartSongs(props){
         
         }
       }
-console.log(songArr)
+
+
    function playSong(){
-    togglePlayPause()
-      setAudio(props.audio)
-      setSongTitle(props.title)
-      setArtiste(props.artiste)
+      togglePlayPause()
+      setSongIndex(props.index)
+      setDefaultCoverart(chartData?.[songIndex]?.images?.coverart)
    }
 
 

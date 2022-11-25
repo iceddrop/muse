@@ -7,6 +7,7 @@ import { SearchContext } from "./contexts/SearchContext";
 import AudioPlayer from "./components/audioPlayer";
 import React from "react";
 import LeadImage from './assets/Lead-image.svg'
+import coverart from './assets/image-from-rawpixel-id-402204-jpeg.jpg'
 
 
 function App() {
@@ -18,12 +19,12 @@ function App() {
   const [chartTitle, setChartTitle] = React.useState('')
   const [alternativeChart, setAlternativeChart] = React.useState([]);
   const [chartData, setChartData] = React.useState([]);
-  const [audio, setAudio] = React.useState('');
   const [songTitle, setSongTitle] = React.useState('');
   const [artiste, setArtiste] = React.useState('');
   const audioPlayer = React.useRef()
   const [isPlaying, setIsPlaying] = React.useState(false);
-  const [songIndex, setSongIndex] = React.useState()
+  const [songIndex, setSongIndex] = React.useState(0);
+  const [defaultCoverart, setDefaultCoverart] = React.useState(coverart)
   const background = {
     backgroundImage: `url(${LeadImage})`,
     backgroundRepeat: 'no-repeat',
@@ -41,7 +42,7 @@ function App() {
   return (
     <div style={chartDisplayed ? background : noBg}>
       <div style={chartDisplayed ? overlay : noBg}>
-      <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData,audio, setAudio,songTitle, setSongTitle,artiste, setArtiste,audioPlayer,isPlaying, setIsPlaying,songIndex, setSongIndex}}>
+      <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData,songTitle, setSongTitle,artiste, setArtiste,audioPlayer,isPlaying, setIsPlaying,songIndex, setSongIndex,defaultCoverart, setDefaultCoverart}}>
             <Router>
                 <Navbar />
                 <Routes>
