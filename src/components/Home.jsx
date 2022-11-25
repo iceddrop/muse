@@ -30,9 +30,9 @@ export default function Home() {
 
   const options = {
     method: 'GET',
-   headers: {
-  'X-RapidAPI-Key': 'c5638bfc11msh1aeaef89dd5f2f4p13bf36jsn7dc98f7940f9',
-		'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
+    headers: {
+      'X-RapidAPI-Key': '2d7616a8a1mshc3f50834071e0f2p1c36cejsn75e36c9bce57',
+      'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
    }
   };
   React.useEffect(()=>{
