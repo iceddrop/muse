@@ -7,7 +7,7 @@ import { SearchContext } from "./contexts/SearchContext";
 import AudioPlayer from "./components/audioPlayer";
 import React from "react";
 import LeadImage from './assets/Lead-image.svg'
-import coverart from './assets/image-from-rawpixel-id-402204-jpeg.jpg'
+
 
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
   const audioPlayer = React.useRef()
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [songIndex, setSongIndex] = React.useState(0);
-  const [defaultCoverart, setDefaultCoverart] = React.useState(coverart)
+  
   const background = {
     backgroundImage: `url(${LeadImage})`,
     backgroundRepeat: 'no-repeat',
@@ -42,7 +42,7 @@ function App() {
   return (
     <div style={chartDisplayed ? background : noBg}>
       <div style={chartDisplayed ? overlay : noBg}>
-      <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData,songTitle, setSongTitle,artiste, setArtiste,audioPlayer,isPlaying, setIsPlaying,songIndex, setSongIndex,defaultCoverart, setDefaultCoverart}}>
+      <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData,songTitle, setSongTitle,artiste, setArtiste,audioPlayer,isPlaying, setIsPlaying,songIndex, setSongIndex}}>
             <Router>
                 <Navbar />
                 <Routes>

@@ -12,7 +12,7 @@ export default function ChartSongs(props){
     const {isPlaying, setIsPlaying} = useContext(SearchContext)
     const {chartData} = useContext(SearchContext)
     const {songIndex,setSongIndex} = useContext(SearchContext)
-    const {defaultCoverart, setDefaultCoverart} = useContext(SearchContext)
+  
 
     function togglePlayPause() {
         const prevVal = isPlaying;
@@ -30,7 +30,6 @@ export default function ChartSongs(props){
    function playSong(){
       togglePlayPause()
       setSongIndex(props.index)
-      setDefaultCoverart(chartData?.[songIndex]?.images?.coverart)
    }
 
 

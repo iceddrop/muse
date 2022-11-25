@@ -1,6 +1,6 @@
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
-import coverart from "../assets/coverart.svg";
+import coverImg from '../assets/image-from-rawpixel-id-402204-jpeg.jpg'
 import previous from "../assets/previous.svg";
 import next from "../assets/next.svg";
 import shuffle from "../assets/shuffle.svg";
@@ -27,7 +27,7 @@ export default function AudioPlayer() {
 
   const {songIndex,setSongIndex} = useContext(SearchContext)
 
-  const {defaultCoverart, setDefaultCoverart} = useContext(SearchContext)
+
 
 
   React.useEffect(() => {
@@ -82,7 +82,7 @@ export default function AudioPlayer() {
     }else{
       setSongIndex(prevVal => prevVal - 1)
     }
-    setDefaultCoverart(chartData?.[songIndex]?.images?.coverart)
+    
   }
 
   function nextSong(){
@@ -91,19 +91,19 @@ export default function AudioPlayer() {
     }else{
       setSongIndex(prevVal => prevVal + 1)
     }
-    setDefaultCoverart(chartData?.[songIndex]?.images?.coverart)
+ 
   }
 
   
  const audio = chartData?.[songIndex]?.hub?.actions?.[1]?.uri
  const audioTitle = chartData?.[songIndex]?.title
  const artiste = chartData?.[songIndex]?.subtitle
-
-  console.log(audioTitle)
+ const coverart = chartData?.[songIndex]?.images?.coverart
+  
   return (
     <div className="audio-player flex justify-between">
       <div className="text-white flex">
-        <img src={defaultCoverart} className="song-cover-art" alt="song-cover-art" />
+        <img src={songIndex ? coverart : coverImg} className="song-cover-art" alt="song-cover-art" />
         <div className="ml-3">
           <h4 className="song-title">{audioTitle}</h4>
           <h6 className="artiste-name">{artiste}</h6>
