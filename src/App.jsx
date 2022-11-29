@@ -24,7 +24,7 @@ function App() {
   const audioPlayer = React.useRef()
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [songIndex, setSongIndex] = React.useState(0);
-  
+  console.log('fidh')
   const background = {
     backgroundImage: `url(${LeadImage})`,
     backgroundRepeat: 'no-repeat',

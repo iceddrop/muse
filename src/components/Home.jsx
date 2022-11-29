@@ -31,7 +31,7 @@ export default function Home() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '2d7616a8a1mshc3f50834071e0f2p1c36cejsn75e36c9bce57',
+      'X-RapidAPI-Key': 'be494ad61cmsh091c14bdeba86d6p1a850fjsne18920c32577',
       'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
    }
   };
@@ -70,11 +70,8 @@ export default function Home() {
     setChartData(alternativeChart)
   }
 
-
-
-console.log(chartData)
   const songTitleEl = chartData.map((data, i) =>(
-    <ChartSongs key={data.key} title={data.title} artiste={data.subtitle} coverarts={data.images?.coverart} index={i}/>
+    <ChartSongs key={data?.key} title={data?.title} artiste={data?.subtitle} coverarts={data?.images?.coverart} index={i}/>
   ))
 
 

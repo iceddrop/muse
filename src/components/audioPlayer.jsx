@@ -3,7 +3,7 @@ import { FaPause } from "react-icons/fa";
 import coverImg from '../assets/image-from-rawpixel-id-402204-jpeg.jpg'
 import previous from "../assets/previous.svg";
 import next from "../assets/next.svg";
-import shuffle from "../assets/shuffle.svg";
+import shuffler from "../assets/shuffle.svg";
 import repeatOne from "../assets/repeate-one.svg";
 import volume from '../assets/volume-high.svg'
 import React from "react";
@@ -27,23 +27,13 @@ export default function AudioPlayer() {
 
   const {songIndex,setSongIndex} = useContext(SearchContext)
 
+   const [randomNum, setRamdomNum] = React.useState(0)
 
-
-
+console.log('di')
   React.useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
-
-  function backThirty() {
-    progressBar.current.value = Number(progressBar.current.value - 30);
-    changeRange();
-  }
-
-  function forwardThirty() {
-    progressBar.current.value = Number(progressBar.current.value + 30);
-    changeRange();
-  }
 
   function togglePlayPause() {
     const prevVal = isPlaying;
@@ -100,6 +90,22 @@ export default function AudioPlayer() {
  const artiste = chartData?.[songIndex]?.subtitle
  const coverart = chartData?.[songIndex]?.images?.coverart
   
+ const songArr = chartData.map((data) => data)
+console.log(songArr)
+
+function shuffle(arr){
+  for (let i = arr.length; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp; 
+  }
+  return arr;
+}
+
+ function playShuffle(){
+  setChartData(shuffle(songArr))
+ }
   return (
     <div className="audio-player flex justify-between">
       <div className="text-white flex">
@@ -116,8 +122,8 @@ export default function AudioPlayer() {
       ></audio>
       <div className="flex flex-col">
         <div className="flex w-16 control-icons-div">
-          <button className="hidden md:block">
-            <img src={shuffle} />
+          <button className="hidden md:block" onClick={playShuffle}>
+            <img src={shuffler} />
           </button>
           <button className="forward-backward hidden md:block ml-8" onClick={prevSong}>
             <img src={previous} />
