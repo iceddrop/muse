@@ -31,7 +31,7 @@ export default function Home() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'be494ad61cmsh091c14bdeba86d6p1a850fjsne18920c32577',
+      'X-RapidAPI-Key': '5c59e950afmshacb05568815de99p1b9745jsn3f810f052f41',
       'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
    }
   };
@@ -74,7 +74,7 @@ export default function Home() {
     <ChartSongs key={data?.key} title={data?.title} artiste={data?.subtitle} coverarts={data?.images?.coverart} index={i}/>
   ))
 
-
+console.log(chartData)
   return (
     <section>
       <div className="sidebar  flex-col items-center hidden md:flex">

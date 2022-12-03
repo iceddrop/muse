@@ -443,6 +443,10 @@
     font-weight: 400;
     font-size: 12px;
   }
+  .shuffle-icon{
+    width: 16px;
+    height: 16px;
+  }
 @media only screen and (min-width:319px) and (max-width:320px){
   .search-icon{
     position: relative;

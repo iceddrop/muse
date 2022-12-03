@@ -6,6 +6,7 @@ import next from "../assets/next.svg";
 import shuffler from "../assets/shuffle.svg";
 import repeatOne from "../assets/repeate-one.svg";
 import volume from '../assets/volume-high.svg'
+import goldShuffle from '../assets/icons8-shuffle-arrows-32.png'
 import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
@@ -27,18 +28,20 @@ export default function AudioPlayer() {
 
   const {songIndex,setSongIndex} = useContext(SearchContext)
 
-   const [randomNum, setRamdomNum] = React.useState(0)
+   const [isRandom, setIsRandom] = React.useState(false)
 
-console.log('di')
+   const [randomNum, setRandomNum] = React.useState(0)
+
+
   React.useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
   function togglePlayPause() {
-    const prevVal = isPlaying;
-    setIsPlaying(!prevVal);
-    if (!prevVal) {
+    setIsPlaying(prevVal => !prevVal);
+    if (isPlaying == false) {
+     
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
@@ -69,7 +72,11 @@ console.log('di')
   function prevSong(){
     if (songIndex === 0){
       setSongIndex(chartData.length - 1)
-    }else{
+    }else if(isRandom === true){
+        setSongIndex(randomNum)
+        setRandomNum(Math.floor(Math.random() * chartData.length - 1))
+    }
+    else{
       setSongIndex(prevVal => prevVal - 1)
     }
     
@@ -78,34 +85,29 @@ console.log('di')
   function nextSong(){
     if (songIndex === chartData.length - 1){
       setSongIndex(0)
-    }else{
+    }
+    else if(isRandom === true){
+      setSongIndex(randomNum)
+      setRandomNum(Math.floor(Math.random() * chartData.length - 1))
+  }else{
       setSongIndex(prevVal => prevVal + 1)
     }
  
   }
 
-  
+  function playShuffle(){
+    setIsRandom(prevVal => !prevVal)
+}
+
+function repeatSong(){
+  setRepeat(prevVal => !prevVal)
+}
  const audio = chartData?.[songIndex]?.hub?.actions?.[1]?.uri
  const audioTitle = chartData?.[songIndex]?.title
  const artiste = chartData?.[songIndex]?.subtitle
  const coverart = chartData?.[songIndex]?.images?.coverart
   
- const songArr = chartData.map((data) => data)
-console.log(songArr)
 
-function shuffle(arr){
-  for (let i = arr.length; i > 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp; 
-  }
-  return arr;
-}
-
- function playShuffle(){
-  setChartData(shuffle(songArr))
- }
   return (
     <div className="audio-player flex justify-between">
       <div className="text-white flex">
@@ -123,7 +125,7 @@ function shuffle(arr){
       <div className="flex flex-col">
         <div className="flex w-16 control-icons-div">
           <button className="hidden md:block" onClick={playShuffle}>
-            <img src={shuffler} />
+            <img className="shuffle-icon" src={isRandom ? goldShuffle : shuffler} />
           </button>
           <button className="forward-backward hidden md:block ml-8" onClick={prevSong}>
             <img src={previous} />
@@ -134,7 +136,7 @@ function shuffle(arr){
           <button className="forward-backward md:mr-8" onClick={nextSong}>
             <img src={next} />
           </button>
-          <button className="hidden md:block ">
+          <button className="hidden md:block " onClick={repeatSong}>
             <img src={repeatOne} />
           </button>
         </div>

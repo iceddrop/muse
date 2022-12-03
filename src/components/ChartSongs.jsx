@@ -14,21 +14,9 @@ export default function ChartSongs(props){
     const {songIndex,setSongIndex} = useContext(SearchContext)
   
 
-    function togglePlayPause() {
-        const prevVal = isPlaying;
-        setIsPlaying(!prevVal);
-        if (!prevVal) {
-          audioPlayer.current.play();
-          
-        } else {
-          audioPlayer.current.pause();
-        
-        }
-      }
 
 
    function playSong(){
-      togglePlayPause()
       setSongIndex(props.index)
    }
 
