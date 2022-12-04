@@ -5,21 +5,11 @@ import { SearchContext } from "../contexts/SearchContext";
 import React from 'react'
 
 export default function ChartSongs(props){
-    const {setAudio} = useContext(SearchContext)
-    const {setSongTitle} = useContext(SearchContext)
-    const {setArtiste} = useContext(SearchContext)
-    const {audioPlayer} = useContext(SearchContext)
-    const {isPlaying, setIsPlaying} = useContext(SearchContext)
-    const {chartData} = useContext(SearchContext)
-    const {songIndex,setSongIndex} = useContext(SearchContext)
-  
-
-
+    const {setSongIndex} = useContext(SearchContext)
 
    function playSong(){
       setSongIndex(props.index)
    }
-
 
     return(
         <div className='chart-songs-div flex justify-between items-center px-2 mt-4' >

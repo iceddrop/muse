@@ -31,7 +31,7 @@ export default function Home() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '5c59e950afmshacb05568815de99p1b9745jsn3f810f052f41',
+      'X-RapidAPI-Key': 'b6b1503743msh9be8dd0a61048cdp149b2cjsnc13798404f37',
       'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
    }
   };
