@@ -16,7 +16,7 @@ import { SearchContext } from "../contexts/SearchContext";
 import MusicSquare from '../assets/music-square-add.svg'
 import redHeart from '../assets/red-heart.svg'
 import playTwo from '../assets/chartPlay.svg'
-
+import SinglesSongs from "./SinglesSongs";
 
 
 export default function Home() {
@@ -31,8 +31,8 @@ export default function Home() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'b6b1503743msh9be8dd0a61048cdp149b2cjsnc13798404f37',
-      'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
+      /*'X-RapidAPI-Key': 'b6b1503743msh9be8dd0a61048cdp149b2cjsnc13798404f37',
+      'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'*/
    }
   };
   React.useEffect(()=>{
@@ -74,7 +74,7 @@ export default function Home() {
     <ChartSongs key={data?.key} title={data?.title} artiste={data?.subtitle} coverarts={data?.images?.coverart} index={i}/>
   ))
 
-console.log(chartData)
+
   return (
     <section>
       <div className="sidebar  flex-col items-center hidden md:flex">
@@ -265,6 +265,7 @@ console.log(chartData)
           </div>
         </div>
       )}
+      <SinglesSongs/>
     </section>
   );
 }

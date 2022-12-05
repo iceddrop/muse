@@ -128,7 +128,7 @@
 .hero-div{
   margin-top:70px;
   padding:30px;
-  height:1000px;
+  
 }
 .hero-accomodate{
   position:relative;
@@ -161,8 +161,6 @@
 }
 .carousel{
   width:100%!important;
-  height:100%;
-
 }
 .inner-carousel{
   display:flex;
@@ -447,6 +445,26 @@
     width: 16px;
     height: 16px;
   }
+  .singles-section{
+    position: relative;
+    bottom:500px;
+    color:white;
+  }
+  .singles-div{
+    width:1500px;
+  }
+  .japan-singles{
+    height:500px;
+    padding-left:35px;
+  }
+  .singles-coverart{
+
+   width:153px;
+   height: 153px;
+   max-width: 153px;
+   max-height: 153px;
+   object-fit: cover;
+  }
 @media only screen and (min-width:319px) and (max-width:320px){
   .search-icon{
     position: relative;
@@ -607,6 +625,9 @@
       width: 284px;
       height: 288px;
     }
+    .japan-singles{
+      padding-left:110px;
+    }
 }
 @media only screen and (min-width:992px){
   .hero-img{
@@ -662,7 +683,7 @@
     height:340px;
   }
   .hero-div{
-    height:1000px;
+    height:100%;
   }
   .music-chart-card{
     width: 500px!important;
