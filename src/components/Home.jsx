@@ -1,7 +1,7 @@
 import video from "../assets/videos.svg";
 import profile from "../assets/profile.svg";
 import logout from "../assets/Logout.svg";
-import ChartSongs from './ChartSongs'
+import ChartSongs from "./ChartSongs";
 import { FaHome } from "react-icons/fa";
 import { BsFillCollectionFill } from "react-icons/bs";
 import { IoMdRadio } from "react-icons/io";
@@ -13,67 +13,78 @@ import smallHeroImg from "../assets/homesecmobile.svg";
 import React from "react";
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
-import MusicSquare from '../assets/music-square-add.svg'
-import redHeart from '../assets/red-heart.svg'
-import playTwo from '../assets/chartPlay.svg'
+import MusicSquare from "../assets/music-square-add.svg";
+import redHeart from "../assets/red-heart.svg";
+import playTwo from "../assets/chartPlay.svg";
 import SinglesSongs from "./SinglesSongs";
-
 
 export default function Home() {
   const { chartDisplayed, setChartDisplayed } = useContext(SearchContext);
   const { usHopChart, setUsHopChart } = useContext(SearchContext);
-  const {chartImg, setChartImg} = useContext(SearchContext);
-  const {chartTitle, setChartTitle} = useContext(SearchContext);
-  const {naijaChart, setNaijaChart}  = useContext(SearchContext);
-  const {alternativeChart, setAlternativeChart} = useContext(SearchContext);
-  const {chartData, setChartData} = useContext(SearchContext);
+  const { chartImg, setChartImg } = useContext(SearchContext);
+  const { chartTitle, setChartTitle } = useContext(SearchContext);
+  const { naijaChart, setNaijaChart } = useContext(SearchContext);
+  const { alternativeChart, setAlternativeChart } = useContext(SearchContext);
+  const { chartData, setChartData } = useContext(SearchContext);
 
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      /*'X-RapidAPI-Key': 'b6b1503743msh9be8dd0a61048cdp149b2cjsnc13798404f37',
-      'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'*/
-   }
+      "X-RapidAPI-Key": "b6b1503743msh9be8dd0a61048cdp149b2cjsnc13798404f37",
+      "X-RapidAPI-Host": "shazam-core.p.rapidapi.com",
+    },
   };
-  React.useEffect(()=>{
-    fetch('https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=HIP_HOP_RAP', options)
-      .then(response => response.json())
-      .then(response => setUsHopChart(response))
-      .catch(err =>  console.error(err)),
+  React.useEffect(() => {
+    fetch(
+      "https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=HIP_HOP_RAP",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => setUsHopChart(response))
+      .catch((err) => console.error(err)),
+      fetch(
+        "https://shazam-core.p.rapidapi.com/v1/charts/country?country_code=NG",
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => setNaijaChart(response))
+        .catch((err) => console.error(err)),
+      fetch(
+        "https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=ALTERNATIVE",
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => setAlternativeChart(response))
+        .catch((err) => console.error(err));
+  }, []);
 
-    fetch('https://shazam-core.p.rapidapi.com/v1/charts/country?country_code=NG', options)
-    .then(response => response.json())
-    .then(response => setNaijaChart(response))
-    .catch(err => console.error(err)),
+  function getUsHopChart() {
+    setChartImg(usHopChart[1]?.images?.coverart),
+      setChartTitle("Out the mud : Top Hip Hop Chart in the US"),
+      setChartData(usHopChart);
+  }
 
-    fetch('https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=ALTERNATIVE', options)
-    .then(response => response.json())
-    .then(response => setAlternativeChart(response))
-    .catch(err => console.error(err))
-  },[]) 
-
-    function getUsHopChart(){
-     setChartImg(usHopChart[1]?.images?.coverart),
-     setChartTitle('Out the mud : Top Hip Hop Chart in the US'),
-     setChartData(usHopChart)
-   }
-
-  function getNaijaChart(){
+  function getNaijaChart() {
     setChartImg(naijaChart[0]?.images?.coverart),
-    setChartTitle('Gbedu :   Top Naija'),
-    setChartData(naijaChart)
+      setChartTitle("Gbedu :   Top Naija"),
+      setChartData(naijaChart);
   }
 
-  function getAlternativeChart(){
+  function getAlternativeChart() {
     setChartImg(alternativeChart[4]?.images?.coverart),
-    setChartTitle('Alternative Crave'),
-    setChartData(alternativeChart)
+      setChartTitle("Alternative Crave"),
+      setChartData(alternativeChart);
   }
 
-  const songTitleEl = chartData.map((data, i) =>(
-    <ChartSongs key={data?.key} title={data?.title} artiste={data?.subtitle} coverarts={data?.images?.coverart} index={i}/>
-  ))
-
+  const songTitleEl = chartData.map((data, i) => (
+    <ChartSongs
+      key={data?.key}
+      title={data?.title}
+      artiste={data?.subtitle}
+      coverarts={data?.images?.coverart}
+      index={i}
+    />
+  ));
 
   return (
     <section>
@@ -107,42 +118,49 @@ export default function Home() {
         </div>
       </div>
       {chartDisplayed ? (
-                <section className="chart-category text-white pr-8">
-                <div className=' md:flex'>
-                    <div className='md:flex'>
-                        <img src={chartImg} className='chart-img rounded-3xl' alt='chart-image'/>
-                        <div className=' mt-4 md:pt-14 md:ml-6 xl:pt-20 lg:pr-10'>
-                            <h2 className='chart-header'>{chartTitle}</h2>
-                            <p className='chart-paragraph mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellat sapiente sequi dolore commodi.</p>
-                            <div className='flex mt-1 chart-duration'>
-                                <p>64 songs -</p>
-                                <p> 16 hrs+</p>
-                            </div>
-                            <div className='flex mt-4'>
-                                <div className='flex chart-icon-div cursor-pointer'>
-                                    <img src={redHeart} className='red-heart' alt='heart-icon'/>
-                                    <p className='ml-2'>Play all</p>
-                                </div>
-                                <div className='flex chart-icon-div ml-3 cursor-pointer'>
-                                    <img src={MusicSquare} className='' alt='music-icon'/>
-                                    <p className='ml-2'>Add to collection</p>
-                                </div>
-                                <div className='flex chart-icon-div ml-3 '>
-                                    <img src={playTwo} className='' alt='play-icon'/>
-                                    <p className='ml-2 md:hidden'>Like</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <section className="chart-category text-white pr-8">
+          <div className=" md:flex">
+            <div className="md:flex">
+              <img
+                src={chartImg}
+                className="chart-img rounded-3xl"
+                alt="chart-image"
+              />
+              <div className=" mt-4 md:pt-14 md:ml-6 xl:pt-20 lg:pr-10">
+                <h2 className="chart-header">{chartTitle}</h2>
+                <p className="chart-paragraph mt-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+                  repellat sapiente sequi dolore commodi.
+                </p>
+                <div className="flex mt-1 chart-duration">
+                  <p>64 songs -</p>
+                  <p> 16 hrs+</p>
                 </div>
-                <div className='mt-5 chart-songs'>
-                    {songTitleEl}
+                <div className="flex mt-4">
+                  <div className="flex chart-icon-div cursor-pointer">
+                    <img
+                      src={redHeart}
+                      className="red-heart"
+                      alt="heart-icon"
+                    />
+                    <p className="ml-2">Play all</p>
+                  </div>
+                  <div className="flex chart-icon-div ml-3 cursor-pointer">
+                    <img src={MusicSquare} className="" alt="music-icon" />
+                    <p className="ml-2">Add to collection</p>
+                  </div>
+                  <div className="flex chart-icon-div ml-3 ">
+                    <img src={playTwo} className="" alt="play-icon" />
+                    <p className="ml-2 md:hidden">Like</p>
+                  </div>
                 </div>
-              </section>
-        
-         
+              </div>
+            </div>
+          </div>
+          <div className="mt-5 chart-songs">{songTitleEl}</div>
+        </section>
       ) : (
-         <div className="hero-div lg:flex">
+        <div className="hero-div lg:flex">
           <div className="hero-accomodate">
             <img src={smallHeroImg} className="md:hidden hero-img mb-4" />
             <img src={heroImg} className="hero-img hidden md:flex " />
@@ -151,7 +169,7 @@ export default function Home() {
               <div className="mini-hero-div flex flex-col justify-between">
                 <div className="">
                   <h1 className="mb-3 hero-section-title-2">R & B Hits</h1>
-                    <p className="mb-4 hero-paragraph">
+                  <p className="mb-4 hero-paragraph">
                     All mine, Lie again, Petty call me everyday, Out of time, No
                     love, Bad habit and so much more.
                   </p>
@@ -176,22 +194,21 @@ export default function Home() {
             <h1 className="pb-3 top-chart lg:ml-4">Top Charts</h1>
             <div className="carousel ">
               <div className="inner-carousel lg:flex lg:flex-col">
-                <div className="music-chart-card flex justify-between p-3 lg:ml-4 cursor-pointer">
+                <div
+                  className="music-chart-card flex justify-between p-3 lg:ml-4 cursor-pointer"
+                  onClick={() => {
+                    setChartDisplayed(true);
+                    getNaijaChart();
+                  }}
+                >
                   <div className="lg:flex">
                     <img
-                      src='https://is3-ssl.mzstatic.com/image/thumb/Music122/v4/a0/d5/f2/a0d5f2c8-2415-a1e7-533b-c19ec5934e07/5059449096629.png/400x400cc.jpg'
+                      src="https://is3-ssl.mzstatic.com/image/thumb/Music122/v4/a0/d5/f2/a0d5f2c8-2415-a1e7-533b-c19ec5934e07/5059449096629.png/400x400cc.jpg"
                       className="rectangle"
                       alt="music-artwork"
                     />
                     <div className="music-info lg:ml-4">
-                      <h3
-                        className="chart-card-header"
-                        onClick={() => {
-                          setChartDisplayed(true); getNaijaChart()
-                        }}
-                      >
-                        Gbedu : Top Naija
-                      </h3>
+                      <h3 className="chart-card-header">Gbedu : Top Naija</h3>
                       <h6 className="chart-card-artist">Jonny Drille</h6>
                       <p className=" chart-card-playtime">2:10:45</p>
                     </div>
@@ -204,22 +221,21 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="music-chart-card flex justify-between p-3 ml-4 cursor-pointer">
+                <div
+                  className="music-chart-card flex justify-between p-3 ml-4 cursor-pointer"
+                  onClick={() => {
+                    setChartDisplayed(true);
+                    getUsHopChart();
+                  }}
+                >
                   <div className="lg:flex">
                     <img
-                      src='https://is4-ssl.mzstatic.com/image/thumb/Music112/v4/e7/21/15/e7211596-4581-c1c6-0300-b9c300148661/22UMGIM95736.rgb.jpg/400x400cc.jpg'
+                      src="https://is4-ssl.mzstatic.com/image/thumb/Music112/v4/e7/21/15/e7211596-4581-c1c6-0300-b9c300148661/22UMGIM95736.rgb.jpg/400x400cc.jpg"
                       className="rectangle"
                       alt="music-artwork"
                     />
                     <div className="music-info lg:ml-4">
-                      <h3
-                        className="chart-card-header"
-                        onClick={() => {
-                          setChartDisplayed(true); getUsHopChart()
-                        }}
-                      >
-                        Out the mud 
-                      </h3>
+                      <h3 className="chart-card-header">Out the mud</h3>
                       <h6 className="chart-card-artist">YG</h6>
                       <p className="chart-card-playtime">2:10:45</p>
                     </div>
@@ -232,7 +248,13 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="music-chart-card flex justify-between p-3 ml-4 cursor-pointer">
+                <div
+                  className="music-chart-card flex justify-between p-3 ml-4 cursor-pointer"
+                  onClick={() => {
+                    setChartDisplayed(true);
+                    getAlternativeChart();
+                  }}
+                >
                   <div className="lg:flex">
                     <img
                       src="https://is4-ssl.mzstatic.com/image/thumb/Music115/v4/95/fd/b9/95fdb9b2-6d2b-92a6-97f2-51c1a6d77f1a/00602527874609.rgb.jpg/400x400cc.jpg"
@@ -240,14 +262,7 @@ export default function Home() {
                       alt="music-artwork"
                     />
                     <div className="music-info lg:ml-4">
-                      <h3
-                        className="chart-card-header"
-                        onClick={() => {
-                          setChartDisplayed(true); getAlternativeChart()
-                        }}
-                      >
-                        Alternative Crave
-                      </h3>
+                      <h3 className="chart-card-header">Alternative Crave</h3>
                       <h6 className="chart-card-artist">Nivarna</h6>
                       <p className="chart-card-playtime">2:10:45</p>
                     </div>
@@ -265,7 +280,7 @@ export default function Home() {
           </div>
         </div>
       )}
-      <SinglesSongs/>
+      <SinglesSongs />
     </section>
   );
 }
