@@ -33,7 +33,9 @@ export default function AudioPlayer() {
 
   const [volume, setVolume] = React.useState(30);
 
-  let { audio } = useContext(SearchContext);
+  const { audio, setAudio } = useContext(SearchContext);
+
+  const { songTitle, setSongTitle } = useContext(SearchContext);
 
   React.useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -106,8 +108,8 @@ export default function AudioPlayer() {
     }
   }, [volume]);
 
-  audio = chartData?.[songIndex]?.hub?.actions?.[1]?.uri;
-  const audioTitle = chartData?.[songIndex]?.title;
+  setAudio(chartData?.[songIndex]?.hub?.actions?.[1]?.uri)
+  setSongTitle(chartData?.[songIndex]?.title)
   const artiste = chartData?.[songIndex]?.subtitle;
   const coverart = chartData?.[songIndex]?.images?.coverart;
 console.log(audio)
@@ -120,7 +122,7 @@ console.log(audio)
           alt="song-cover-art"
         />
         <div className="ml-3">
-          <h4 className="song-title">{audioTitle}</h4>
+          <h4 className="song-title">{songTitle}</h4>
           <h6 className="artiste-name">{artiste}</h6>
         </div>
       </div>

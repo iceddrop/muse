@@ -34,6 +34,7 @@ export default function Home() {
 		'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
     },
   };
+  
   React.useEffect(() => {
     fetch(
       "https://shazam-core.p.rapidapi.com/v1/charts/genre-country?country_code=US&genre_code=HIP_HOP_RAP",

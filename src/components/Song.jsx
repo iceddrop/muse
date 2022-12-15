@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { SearchContext } from "../contexts/SearchContext";
 export default function Song(props) {
-  let { audio } = useContext(SearchContext);
-
+  const { audio, setAudio } = useContext(SearchContext);
+  const { songTitle, setSongTitle } = useContext(SearchContext);
  
 
   function changeSong() {
-    audio = props.song;
+    setAudio(props.song)
+    setSongTitle(props.title)
   }
-  changeSong();
+  
 
   console.log(audio);
   return (
