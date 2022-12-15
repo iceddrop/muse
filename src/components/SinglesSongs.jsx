@@ -5,7 +5,7 @@ export default function SinglesSongs(){
     const options = {
         method: 'GET',
         headers: {
-           'X-RapidAPI-Key': 'f4b3066387msh67203ea580d45c8p12e232jsn331e2bd3e2ca',
+            'X-RapidAPI-Key': '0bbe3b63d9msh091cb247a0a48dap1c16ebjsn09968b1e08cb',
             'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
         }
     };
@@ -18,11 +18,11 @@ export default function SinglesSongs(){
     },[])
 
        const singlesEl = singlesData.map((data) =>(
-            <Song key={data?.key} img={data?.images?.coverart} artiste={data?.subtitle} title={data?.title}/>
+            <Song key={data?.key} img={data?.images?.coverart} artiste={data?.subtitle} title={data?.title} song={data?.hub?.actions?.[1]?.uri}/>
         ))
     return(
         <section className="carousel japan-singles text-white">
-            <h3>Hits from japan</h3>
+            <h3 className='mb-3 singles-title'>Hits from Japan</h3>
             <div className='inner-carousel'>
                {singlesEl}
             </div>

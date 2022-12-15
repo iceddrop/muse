@@ -26,7 +26,7 @@ export default function ArtisteMusicOverview() {
         .then(response => setArtisteData(response.tracks.hits?.map(details => details)))
         .catch(err => console.error(err));
    },[])
-    console.log(artisteData)
+   
    
   return (
     <div className="artiste-profile">

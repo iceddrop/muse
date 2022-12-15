@@ -23,7 +23,7 @@ export default function AudioPlayer() {
 
   const animationRef = React.useRef();
 
-  const { chartData} = useContext(SearchContext);
+  const { chartData } = useContext(SearchContext);
 
   const { songIndex, setSongIndex } = useContext(SearchContext);
 
@@ -32,6 +32,8 @@ export default function AudioPlayer() {
   const [randomNum, setRandomNum] = React.useState(0);
 
   const [volume, setVolume] = React.useState(30);
+
+  let { audio } = useContext(SearchContext);
 
   React.useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -98,17 +100,17 @@ export default function AudioPlayer() {
     setRepeat((prevVal) => !prevVal);
   }
 
-  React.useEffect(()=>{
-    if(audioPlayer){
-      audioPlayer.current.volume = volume/100;
+  React.useEffect(() => {
+    if (audioPlayer) {
+      audioPlayer.current.volume = volume / 100;
     }
-  },[volume])
+  }, [volume]);
 
-  const audio = chartData?.[songIndex]?.hub?.actions?.[1]?.uri;
+  audio = chartData?.[songIndex]?.hub?.actions?.[1]?.uri;
   const audioTitle = chartData?.[songIndex]?.title;
   const artiste = chartData?.[songIndex]?.subtitle;
   const coverart = chartData?.[songIndex]?.images?.coverart;
-
+console.log(audio)
   return (
     <div className="audio-player flex justify-between">
       <div className="text-white flex">
@@ -170,6 +172,7 @@ export default function AudioPlayer() {
           max={100}
           value={volume}
           onChange={(e) => setVolume(e.target.value)}
+          id="audio"
         />
       </div>
     </div>

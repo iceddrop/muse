@@ -24,7 +24,9 @@ function App() {
   const audioPlayer = React.useRef()
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [songIndex, setSongIndex] = React.useState(0);
-  console.log('fidh')
+  let audioDuration ;
+  let audio ;
+  
   const background = {
     backgroundImage: `url(${LeadImage})`,
     backgroundRepeat: 'no-repeat',
@@ -42,7 +44,7 @@ function App() {
   return (
     <div style={chartDisplayed ? background : noBg}>
       <div style={chartDisplayed ? overlay : noBg}>
-      <SearchContext.Provider value={{ searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData,songTitle, setSongTitle,artiste, setArtiste,audioPlayer,isPlaying, setIsPlaying,songIndex, setSongIndex}}>
+      <SearchContext.Provider value={{ audioDuration, searchInput, setSearchInput, chartDisplayed, setChartDisplayed, usHopChart, setUsHopChart, chartImg, setChartImg,chartTitle, setChartTitle,naijaChart, setNaijaChart,alternativeChart, setAlternativeChart,chartData, setChartData,songTitle, setSongTitle,artiste, setArtiste,audioPlayer,isPlaying, setIsPlaying,songIndex, setSongIndex,audio}}>
             <Router>
                 <Navbar />
                 <Routes>

@@ -30,8 +30,8 @@ export default function Home() {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "b6b1503743msh9be8dd0a61048cdp149b2cjsnc13798404f37",
-      "X-RapidAPI-Host": "shazam-core.p.rapidapi.com",
+		'X-RapidAPI-Key': '0bbe3b63d9msh091cb247a0a48dap1c16ebjsn09968b1e08cb',
+		'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
     },
   };
   React.useEffect(() => {
@@ -160,6 +160,7 @@ export default function Home() {
           <div className="mt-5 chart-songs">{songTitleEl}</div>
         </section>
       ) : (
+        <>
         <div className="hero-div lg:flex">
           <div className="hero-accomodate">
             <img src={smallHeroImg} className="md:hidden hero-img mb-4" />
@@ -279,8 +280,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <SinglesSongs />
+        </>
       )}
-      <SinglesSongs />
+
     </section>
   );
 }

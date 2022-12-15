@@ -5,7 +5,13 @@ import { SearchContext } from "../contexts/SearchContext";
 import React from 'react'
 
 export default function ChartSongs(props){
-    const {setSongIndex} = useContext(SearchContext)
+    const {setSongIndex} = useContext(SearchContext);
+
+    let { audioDuration} = useContext(SearchContext);
+
+    const { audioPlayer } = useContext(SearchContext);
+
+    audioDuration = audioPlayer.current.duration;
 
    function playSong(){
       setSongIndex(props.index)
@@ -23,7 +29,7 @@ export default function ChartSongs(props){
         </div>
         <div className='flex flex-col  md:flex md:flex-row-reverse md:w-60 md:justify-between md:pr-4'>
            <img src={more} className='more-icon' alt='more-icon'/>
-            <p className='song-duration'>4:17</p>
+            <p className='song-duration'>{audioDuration}</p>
         </div>
     </div>
     )

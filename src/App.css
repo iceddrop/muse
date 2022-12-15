@@ -451,19 +451,32 @@
     color:white;
   }
   .singles-div{
-    width:1500px;
+    position: relative;
+    right: 23px;
   }
   .japan-singles{
     height:500px;
     padding-left:35px;
   }
+  .singles-title{
+    font-family:Quicksand;
+    font-size: 24px;
+  }
   .singles-coverart{
-
    width:153px;
    height: 153px;
    max-width: 153px;
    max-height: 153px;
    object-fit: cover;
+  }
+  .song-title , .artiste{
+    font-family:Quicksand;
+  }
+  .song-title{
+    color: #A4C7C6;
+  }
+  .artiste{
+    font-size:18px;
   }
 @media only screen and (min-width:319px) and (max-width:320px){
   .search-icon{
