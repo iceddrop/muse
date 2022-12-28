@@ -30,9 +30,9 @@ export default function ArtisteMusicOverview() {
    
   return (
     <div className="artiste-profile">
-        <div className="artiste-img-div flex ">
+        <div className="artiste-img-div flex">
           <img src={artisteData[0]?.track.share.avatar} className='artiste-img text-white' alt='artiste-img'/>
-          <h4 className="text-white ml-3">{artisteData[0]?.track.subtitle}</h4>
+          <h4 className="text-white ml-3 artiste-overview-name">{artisteData[0]?.track.subtitle}</h4>
         </div>
     </div>
   )

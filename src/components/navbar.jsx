@@ -118,7 +118,7 @@ export default function Navbar() {
     </nav>
           {
             isOpen ?        
-             <div ref={container} className='search-result-div'>
+             <div ref={container} className='search-result-div mt-4'>
                 <Link to='./artisteMusicOverview' className="flex flex-col items-center text-white cursor-pointer pt-1">{searchInput}</Link>
           </div> : ''
           }

@@ -413,6 +413,18 @@
     border-radius: 10px;
     height: 56px;
   }
+  .artiste-img-div{
+    position: relative;
+    top:55px;
+  }
+  .artiste-overview-name{
+    position: relative;
+    top:60px;
+    display: flex;
+    align-content: center;
+    height: 100%;
+    background-color: red;
+  }
   .chart-coverart{
     width:39px;
     height:39px;
@@ -477,6 +489,13 @@
   }
   .artiste{
     font-size:18px;
+  }
+  .collections{
+    position: relative;
+    top: 100px;
+    background: red;
+    padding-left:100px;
+    
   }
 @media only screen and (min-width:319px) and (max-width:320px){
   .search-icon{
@@ -557,7 +576,10 @@
   .chart-icon-div{
     padding:5px 10px;
   }
-
+  .search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+  }
 }
 @media only screen and (min-width:768px){
   .search-input{

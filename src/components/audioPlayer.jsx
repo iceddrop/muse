@@ -129,7 +129,7 @@ console.log(audio)
       <audio ref={audioPlayer} src={audio} preload="metadata"></audio>
       <div className="flex flex-col">
         <div className="flex w-16 control-icons-div">
-          <button className="hidden md:block" onClick={playShuffle}>
+          <button className ="hidden md:block" onClick={playShuffle}>
             <img
               className="shuffle-icon"
               src={isRandom ? goldShuffle : shuffler}
