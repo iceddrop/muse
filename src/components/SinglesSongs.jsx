@@ -1,11 +1,11 @@
-import Song from './Song'
+import Song from './song'
 import React from 'react'
 export default function SinglesSongs(){
     const [singlesData, setSinglesData] = React.useState([])
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '036795ec2amsh8c2b98ef8a502acp146724jsn6f3538b26522',
+            'X-RapidAPI-Key': '26de8eae8cmshf94dce60944bca6p17a2e1jsn726a251f07c4',
             'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
         }
     };
