@@ -1,4 +1,4 @@
-import Song from './song'
+import Song from '../components/Song'
 import React from 'react'
 export default function SinglesSongs(){
     const [singlesData, setSinglesData] = React.useState([])
